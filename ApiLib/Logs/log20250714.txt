@@ -1,0 +1,1552 @@
+2025-07-14 08:29:41.271 +03:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-14 08:29:41.565 +03:00 [INF] Now listening on: https://localhost:7240
+2025-07-14 08:29:41.570 +03:00 [INF] Now listening on: http://localhost:5030
+2025-07-14 08:29:41.658 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 08:29:41.667 +03:00 [INF] Hosting environment: Development
+2025-07-14 08:29:41.670 +03:00 [INF] Content root path: C:\Users\HP\Desktop\MerchantsManagemt\ApiLib
+2025-07-14 08:29:44.075 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/swagger/index.html - null null
+2025-07-14 08:29:44.319 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /swagger/index.html
+QueryString: 
+2025-07-14 08:29:44.542 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: <!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+
+        html {
+            box-sizing: border-box;
+            overflow: -moz-scrollbars-vertical;
+            overflow-y: scroll;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            background: #fafafa;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="swagger-ui"></div>
+
+    <!-- Workaround for https://github.com/swagger-api/swagger-editor/issues/1371 -->
+    <script>
+        if (window.navigator.userAgent.indexOf("Edge") > -1) {
+            console.log("Removing native Edge fetch in favor of swagger-ui's polyfill")
+            window.fetch = undefined;
+        }
+    </script>
+
+    <script src="./swagger-ui-bundle.js"></script>
+    <script src="./swagger-ui-standalone-preset.js"></script>
+    <script>
+        /* Source: https://gist.github.com/lamberta/3768814
+         * Parse a string function definition and return a function object. Does not use eval.
+         * @param {string} str
+         * @return {function}
+         *
+         * Example:
+         *  var f = function (x, y) { return x * y; };
+         *  var g = parseFunction(f.toString());
+         *  g(33, 3); //=> 99
+         */
+        function parseFunction(str) {
+            if (!str) return void (0);
+
+            var fn_body_idx = str.indexOf('{'),
+                fn_body = str.substring(fn_body_idx + 1, str.lastIndexOf('}')),
+                fn_declare = str.substring(0, fn_body_idx),
+                fn_params = fn_declare.substring(fn_declare.indexOf('(') + 1, fn_declare.lastIndexOf(')')),
+                args = fn_params.split(',');
+
+            args.push(fn_body);
+
+            function Fn() {
+                return Function.apply(this, args);
+            }
+            Fn.prototype = Function.prototype;
+
+            return new Fn();
+        }
+
+        window.onload = function () {
+            var configObject = JSON.parse('{"urls":[{"url":"v1/swagger.json","name":"ApiLib v1"}],"deepLinking":false,"persistAuthorization":false,"displayOperationId":false,"defaultModelsExpandDepth":1,"defaultModelExpandDepth":1,"defaultModelRendering":"example","displayRequestDuration":false,"docExpansion":"list","showExtensions":false,"showCommonExtensions":false,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"tryItOutEnabled":false}');
+            var oauthConfigObject = JSON.parse('{"scopeSeparator":" ","scopes":[],"useBasicAuthenticationWithAccessCodeGrant":false,"usePkceWithAuthorizationCodeGrant":false}');
+
+            // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
+            configObject.urls.forEach(function (item) {
+                if (item.url.startsWith("http") || item.url.startsWith("/")) return;
+                item.url = window.location.href.replace("index.html", item.url).split('#')[0];
+            });
+
+            // If validatorUrl is not explicitly provided, disable the feature by setting to null
+            if (!configObject.hasOwnProperty("validatorUrl"))
+                configObject.validatorUrl = null
+
+            // If oauth2RedirectUrl isn't specified, use the built-in default
+            if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+                configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
+
+            // Apply mandatory parameters
+            configObject.dom_id = "#swagger-ui";
+            configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+            configObject.layout = "StandaloneLayout";
+
+            // Parse and add interceptor functions
+            var interceptors = JSON.parse('{}');
+            if (interceptors.RequestInterceptorFunction)
+                configObject.requestInterceptor = parseFunction(interceptors.RequestInterceptorFunction);
+            if (interceptors.ResponseInterceptorFunction)
+                configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
+
+            // Begin Swagger UI call region
+
+            const ui = SwaggerUIBundle(configObject);
+
+            ui.initOAuth(oauthConfigObject);
+
+            // End Swagger UI call region
+
+            window.ui = ui
+        }
+    </script>
+</body>
+</html>
+
+2025-07-14 08:29:44.583 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/swagger/index.html - 200 null text/html;charset=utf-8 510.4825ms
+2025-07-14 08:29:44.693 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-14 08:29:44.694 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/_vs/browserLink - null null
+2025-07-14 08:29:44.709 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript; charset=utf-8 15.636ms
+2025-07-14 08:29:44.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/_vs/browserLink - 200 null text/javascript; charset=UTF-8 120.3195ms
+2025-07-14 08:29:45.044 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/swagger/v1/swagger.json - null null
+2025-07-14 08:29:45.053 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /swagger/v1/swagger.json
+QueryString: 
+2025-07-14 08:29:45.082 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Merchants Management API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantBranches/create": {
+      "post": {
+        "tags": [
+          "MerchantBranches"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantBranches/all": {
+      "get": {
+        "tags": [
+          "MerchantBranches"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantBranches/update/{id}": {
+      "put": {
+        "tags": [
+          "MerchantBranches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantBranchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantBranches/delete/{id}": {
+      "delete": {
+        "tags": [
+          "MerchantBranches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/create": {
+      "post": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantGroupRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantGroupRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/all": {
+      "get": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/active": {
+      "get": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/updateAr/{id}": {
+      "put": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "newName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/updateEn/{id}": {
+      "put": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "newName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MerchantGroups/delete/{id}": {
+      "delete": {
+        "tags": [
+          "MerchantGroups"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/create": {
+      "post": {
+        "tags": [
+          "Merchants"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/active": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/by-group/{groupId}": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/{id}": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/{id}/with-branches": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/{merchantId}/main-branch": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/search": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "branchName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/search/pdf": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "branchName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/search/with-branches/pdf": {
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "branchName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/change-group/{merchantId}": {
+      "put": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "newGroupId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Merchants/update/{merchantId}": {
+      "put": {
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z0-9_]+$",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 100,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&#]{8,}$",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MerchantBranchRequest": {
+        "required": [
+          "address",
+          "branchName_Ar",
+          "branchName_En",
+          "cityId",
+          "contactPersonId",
+          "governateId",
+          "merchantId",
+          "phone",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "branchName_Ar": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "branchName_En": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "merchantId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "contactPersonId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "cityId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "governateId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "alHat": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "maxLength": 200,
+            "minLength": 5,
+            "type": "string"
+          },
+          "region": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "maxLength": 50,
+            "minLength": 0,
+            "pattern": "^(\\+?\\d{1,4}[\\s-]?)?\\d{7,15}$",
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "phone": {
+            "maxLength": 50,
+            "minLength": 0,
+            "pattern": "^(\\+?\\d{1,4}[\\s-]?)?\\d{7,15}$",
+            "type": "string"
+          },
+          "mobile": {
+            "maxLength": 50,
+            "minLength": 0,
+            "pattern": "^(\\+?\\d{1,4}[\\s-]?)?\\d{7,15}$",
+            "type": "string",
+            "nullable": true
+          },
+          "gps": {
+            "maxLength": 100,
+            "minLength": 0,
+            "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$",
+            "type": "string",
+            "nullable": true
+          },
+          "mainBranch": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MerchantGroupRequest": {
+        "required": [
+          "name_Ar",
+          "name_En"
+        ],
+        "type": "object",
+        "properties": {
+          "name_Ar": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "name_En": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MerchantRequest": {
+        "required": [
+          "businessType",
+          "merchantGroupId",
+          "name_Ar",
+          "name_En",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "name_Ar": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "name_En": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "businessType": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchantGroupId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "managerName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterRequest": {
+        "required": [
+          "email",
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z0-9_]+$",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 100,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&#]{8,}$",
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter 'your token'",
+        "scheme": "bearer",
+        "bearerFormat": "Jwt"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
+2025-07-14 08:29:45.157 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 113.1404ms
+2025-07-14 08:39:55.016 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/Auth/register - application/json 100
+2025-07-14 08:39:55.027 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Auth/register
+QueryString: 
+2025-07-14 08:39:55.031 +03:00 [INF] Request Body: {
+  "username": "shouqJamal",
+  "password": "SHOUQ*shouq!2003$",
+  "email": "shouqjamal@gmail.com"
+}
+2025-07-14 08:39:55.044 +03:00 [INF] CORS policy execution successful.
+2025-07-14 08:39:55.053 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.AuthController.Register (ApiLib)'
+2025-07-14 08:39:55.090 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(CommonLib.Dtos.Requests.RegisterRequest) on controller ApiLib.Controllers.AuthController (ApiLib).
+2025-07-14 08:39:55.122 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:39:55.129 +03:00 [INF] JwtSettings loaded: Issuer=MerchantsManagemt, Audience=MerchantsManagemtUsers, ExpiryInMinutes=20
+2025-07-14 08:39:55.985 +03:00 [INF] Registering user shouqJamal
+2025-07-14 08:39:56.168 +03:00 [INF] User shouqJamal registered successfully.
+2025-07-14 08:39:56.186 +03:00 [INF] Executing OkObjectResult, writing value of type 'Microsoft.Extensions.Localization.LocalizedString'.
+2025-07-14 08:39:56.196 +03:00 [INF] Executed action ApiLib.Controllers.AuthController.Register (ApiLib) in 1090.9146ms
+2025-07-14 08:39:56.202 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.AuthController.Register (ApiLib)'
+2025-07-14 08:39:56.205 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"name":"Userregisteredsuccessfully","value":"Userregisteredsuccessfully","resourceNotFound":true,"searchedLocation":"ApiLib.Resources.Controllers.AuthController"}
+2025-07-14 08:39:56.209 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/Auth/register - 200 null application/json; charset=utf-8 1193.1017ms
+2025-07-14 08:40:22.876 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/Auth/login - application/json 65
+2025-07-14 08:40:22.887 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Auth/login
+QueryString: 
+2025-07-14 08:40:22.893 +03:00 [INF] Request Body: {
+  "username": "shouqJamal",
+  "password": "SHOUQ*shouq!2003$"
+}
+2025-07-14 08:40:22.901 +03:00 [INF] CORS policy execution successful.
+2025-07-14 08:40:22.903 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.AuthController.Login (ApiLib)'
+2025-07-14 08:40:22.913 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CommonLib.Dtos.Requests.LoginRequest) on controller ApiLib.Controllers.AuthController (ApiLib).
+2025-07-14 08:40:22.916 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:40:23.232 +03:00 [INF] Generating token for user shouqJamal
+2025-07-14 08:40:23.276 +03:00 [INF] JWT generated successfully for user: shouqJamal, Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:40:23.284 +03:00 [INF] User shouqJamal logged in successfully.
+2025-07-14 08:40:23.287 +03:00 [INF] Executing OkObjectResult, writing value of type 'CommonLib.Dtos.Responses.UserWithTokenResponse'.
+2025-07-14 08:40:23.292 +03:00 [INF] Executed action ApiLib.Controllers.AuthController.Login (ApiLib) in 375.4698ms
+2025-07-14 08:40:23.295 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.AuthController.Login (ApiLib)'
+2025-07-14 08:40:23.296 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"id":28,"username":"shouqJamal","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE"}
+2025-07-14 08:40:23.297 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/Auth/login - 200 null application/json; charset=utf-8 421.4906ms
+2025-07-14 08:41:15.179 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/MerchantGroups/create - application/json 47
+2025-07-14 08:41:15.192 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/MerchantGroups/create
+QueryString: 
+2025-07-14 08:41:15.197 +03:00 [INF] Request Body: {
+  "name_Ar": "شوق",
+  "name_En": "Shouq"
+}
+2025-07-14 08:41:15.243 +03:00 [INF] CORS policy execution successful.
+2025-07-14 08:41:15.247 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantGroupsController.CreateGroup (ApiLib)'
+2025-07-14 08:41:15.254 +03:00 [INF] Route matched with {action = "CreateGroup", controller = "MerchantGroups"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateGroup(CommonLib.Dtos.Requests.MerchantGroupRequest) on controller ApiLib.Controllers.MerchantGroupsController (ApiLib).
+2025-07-14 08:41:15.261 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:15.263 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:15.279 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:41:15.284 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:41:15.286 +03:00 [INF] Connecting to Redis with connection string: localhost:6379
+2025-07-14 08:41:15.300 +03:00 [INF] Successfully connected to Redis.
+2025-07-14 08:41:15.305 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:41:16.031 +03:00 [INF] GroupCreated
+2025-07-14 08:41:16.053 +03:00 [INF] GroupCreatedSuccessfully
+2025-07-14 08:41:16.059 +03:00 [INF] Removing cache for key: AllGroups
+2025-07-14 08:41:16.066 +03:00 [INF] Cache removed successfully for key: AllGroups
+2025-07-14 08:41:16.069 +03:00 [INF] Removing cache for key: ActiveGroups
+2025-07-14 08:41:16.071 +03:00 [INF] Cache removed successfully for key: ActiveGroups
+2025-07-14 08:41:16.075 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:41:16.080 +03:00 [INF] Executed action ApiLib.Controllers.MerchantGroupsController.CreateGroup (ApiLib) in 821.9342ms
+2025-07-14 08:41:16.083 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantGroupsController.CreateGroup (ApiLib)'
+2025-07-14 08:41:16.084 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"message":"GroupCreatedSuccessfully"}
+2025-07-14 08:41:16.085 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/MerchantGroups/create - 200 null application/json; charset=utf-8 906.2703ms
+2025-07-14 08:41:26.103 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/MerchantGroups/all - null null
+2025-07-14 08:41:26.118 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/MerchantGroups/all
+QueryString: 
+2025-07-14 08:41:26.127 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantGroupsController.GetAllGroups (ApiLib)'
+2025-07-14 08:41:26.134 +03:00 [INF] Route matched with {action = "GetAllGroups", controller = "MerchantGroups"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllGroups() on controller ApiLib.Controllers.MerchantGroupsController (ApiLib).
+2025-07-14 08:41:26.136 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:26.140 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:26.144 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:41:26.145 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:41:26.146 +03:00 [INF] Connecting to Redis with connection string: localhost:6379
+2025-07-14 08:41:26.151 +03:00 [INF] Successfully connected to Redis.
+2025-07-14 08:41:26.153 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:41:26.159 +03:00 [INF] RetrievingAllGroups
+2025-07-14 08:41:26.162 +03:00 [INF] Retrieving cache for key: AllGroups
+2025-07-14 08:41:26.167 +03:00 [INF] No cache found for key: AllGroups
+2025-07-14 08:41:26.194 +03:00 [INF] Setting cache for key: AllGroups, expiration: "00:10:00"
+2025-07-14 08:41:26.210 +03:00 [INF] Cache set successfully for key: AllGroups
+2025-07-14 08:41:26.215 +03:00 [INF] RetrievedAllGroups
+2025-07-14 08:41:26.218 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:41:26.227 +03:00 [INF] Executed action ApiLib.Controllers.MerchantGroupsController.GetAllGroups (ApiLib) in 91.3984ms
+2025-07-14 08:41:26.230 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantGroupsController.GetAllGroups (ApiLib)'
+2025-07-14 08:41:26.232 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":[{"id":24,"name_Ar":"شوق","name_En":"Shouq","status":"Active"}]}
+2025-07-14 08:41:26.234 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/MerchantGroups/all - 200 null application/json; charset=utf-8 130.5787ms
+2025-07-14 08:41:33.649 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/MerchantGroups/active - null null
+2025-07-14 08:41:33.660 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/MerchantGroups/active
+QueryString: 
+2025-07-14 08:41:33.666 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantGroupsController.GetActiveGroups (ApiLib)'
+2025-07-14 08:41:33.679 +03:00 [INF] Route matched with {action = "GetActiveGroups", controller = "MerchantGroups"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActiveGroups() on controller ApiLib.Controllers.MerchantGroupsController (ApiLib).
+2025-07-14 08:41:33.684 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:33.687 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:41:33.690 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:41:33.693 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:41:33.695 +03:00 [INF] Connecting to Redis with connection string: localhost:6379
+2025-07-14 08:41:33.700 +03:00 [INF] Successfully connected to Redis.
+2025-07-14 08:41:33.704 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:41:33.708 +03:00 [INF] RetrievingActiveGroups
+2025-07-14 08:41:33.710 +03:00 [INF] Retrieving cache for key: ActiveGroups
+2025-07-14 08:41:33.713 +03:00 [INF] No cache found for key: ActiveGroups
+2025-07-14 08:41:33.724 +03:00 [INF] Setting cache for key: ActiveGroups, expiration: "00:10:00"
+2025-07-14 08:41:33.728 +03:00 [INF] Cache set successfully for key: ActiveGroups
+2025-07-14 08:41:33.729 +03:00 [INF] RetrievedActiveGroups
+2025-07-14 08:41:33.731 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:41:33.733 +03:00 [INF] Executed action ApiLib.Controllers.MerchantGroupsController.GetActiveGroups (ApiLib) in 48.7195ms
+2025-07-14 08:41:33.735 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantGroupsController.GetActiveGroups (ApiLib)'
+2025-07-14 08:41:33.738 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":[{"id":24,"name_Ar":"شوق","name_En":"Shouq","status":"Active"}]}
+2025-07-14 08:41:33.741 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/MerchantGroups/active - 200 null application/json; charset=utf-8 91.8236ms
+2025-07-14 08:42:49.317 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/Merchants/create - application/json 147
+2025-07-14 08:42:49.332 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/create
+QueryString: 
+2025-07-14 08:42:49.337 +03:00 [INF] Request Body: {
+  "name_Ar": "بنك",
+  "name_En": "Bank",
+  "businessType": 2147483647,
+  "merchantGroupId": 24,
+  "managerName": "shouqJamal",
+  "status": 1
+}
+2025-07-14 08:42:49.342 +03:00 [INF] CORS policy execution successful.
+2025-07-14 08:42:49.344 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.CreateMerchant (ApiLib)'
+2025-07-14 08:42:49.351 +03:00 [INF] Route matched with {action = "CreateMerchant", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateMerchant(CommonLib.Dtos.Requests.MerchantRequest) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:42:49.355 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:42:49.356 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:42:49.358 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:42:49.359 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:42:49.369 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:42:49.428 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:42:49.437 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.CreateMerchant (ApiLib) in 81.6414ms
+2025-07-14 08:42:49.442 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.CreateMerchant (ApiLib)'
+2025-07-14 08:42:49.444 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"message":"Merchantcreatedsuccessfully"}
+2025-07-14 08:42:49.445 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/Merchants/create - 200 null application/json; charset=utf-8 127.9975ms
+2025-07-14 08:42:58.279 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/active - null null
+2025-07-14 08:42:58.288 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/active
+QueryString: 
+2025-07-14 08:42:58.296 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetActiveMerchants (ApiLib)'
+2025-07-14 08:42:58.307 +03:00 [INF] Route matched with {action = "GetActiveMerchants", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActiveMerchants() on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:42:58.315 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:42:58.318 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:42:58.320 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:42:58.322 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:42:58.323 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:42:58.406 +03:00 [INF] Retrieved 1 active merchants.
+2025-07-14 08:42:58.519 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:42:58.531 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetActiveMerchants (ApiLib) in 215.8244ms
+2025-07-14 08:42:58.535 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetActiveMerchants (ApiLib)'
+2025-07-14 08:42:58.536 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":[{"id":21,"name_Ar":"بنك","name_En":"Bank","businessType":2147483647,"managerName":"shouqJamal","status":"Active"}]}
+2025-07-14 08:42:58.538 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/active - 200 null application/json; charset=utf-8 259.488ms
+2025-07-14 08:43:11.592 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/by-group/24 - null null
+2025-07-14 08:43:11.603 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/by-group/24
+QueryString: 
+2025-07-14 08:43:11.609 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantsByGroupId (ApiLib)'
+2025-07-14 08:43:11.621 +03:00 [INF] Route matched with {action = "GetMerchantsByGroupId", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMerchantsByGroupId(Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:43:11.629 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:11.630 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:11.632 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:43:11.634 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:43:11.638 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:43:11.663 +03:00 [INF] Retrieved 1 merchants for GroupId: 24
+2025-07-14 08:43:11.668 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:43:11.670 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetMerchantsByGroupId (ApiLib) in 41.259ms
+2025-07-14 08:43:11.672 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantsByGroupId (ApiLib)'
+2025-07-14 08:43:11.675 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":[{"id":21,"name_Ar":"بنك","name_En":"Bank","businessType":2147483647,"managerName":"shouqJamal","status":"Active"}]}
+2025-07-14 08:43:11.677 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/by-group/24 - 200 null application/json; charset=utf-8 85.5314ms
+2025-07-14 08:43:22.642 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/21 - null null
+2025-07-14 08:43:22.670 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/21
+QueryString: 
+2025-07-14 08:43:22.677 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantDetailsById (ApiLib)'
+2025-07-14 08:43:22.689 +03:00 [INF] Route matched with {action = "GetMerchantDetailsById", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMerchantDetailsById(Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:43:22.694 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:22.695 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:22.697 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:43:22.699 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:43:22.701 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:43:22.730 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:43:22.739 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetMerchantDetailsById (ApiLib) in 44.6672ms
+2025-07-14 08:43:22.743 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantDetailsById (ApiLib)'
+2025-07-14 08:43:22.745 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":{"id":21,"name_Ar":"بنك","name_En":"Bank","businessType":2147483647,"managerName":"shouqJamal","status":"Active"}}
+2025-07-14 08:43:22.746 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/21 - 200 null application/json; charset=utf-8 104.2341ms
+2025-07-14 08:43:34.345 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/21/with-branches - null null
+2025-07-14 08:43:34.355 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/21/with-branches
+QueryString: 
+2025-07-14 08:43:34.361 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib)'
+2025-07-14 08:43:34.372 +03:00 [INF] Route matched with {action = "GetMerchantWithBranches", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMerchantWithBranches(Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:43:34.378 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:34.380 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:43:34.382 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:43:34.386 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:43:34.389 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:43:34.418 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:43:34.428 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib) in 49.5928ms
+2025-07-14 08:43:34.430 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib)'
+2025-07-14 08:43:34.431 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":{"merchantId":21,"merchantName_Ar":"بنك","merchantName_En":"Bank","branches":[]}}
+2025-07-14 08:43:34.435 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/21/with-branches - 200 null application/json; charset=utf-8 89.5501ms
+2025-07-14 08:48:20.236 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/MerchantBranches/create - application/json 478
+2025-07-14 08:48:20.251 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/MerchantBranches/create
+QueryString: 
+2025-07-14 08:48:20.256 +03:00 [INF] Request Body: {
+  "branchName_Ar": "الفرع الرئيسي",
+  "branchName_En": "Main Branch",
+  "merchantId": 21,
+  "contactPersonId": 28,
+  "cityId": 101,
+  "governateId": 7,
+  "alHat": "Branch notes in English",
+  "address": "King Abdullah Street, Riyadh, Saudi Arabia",
+  "region": "Central",
+  "fax": "0112345678",
+  "website": "https://www.merchant-example.com",
+  "phone": "0115678901",
+  "mobile": "0551234567",
+  "gps": "24.7136, 46.6753",
+  "mainBranch": "true",
+  "status": 1
+}
+
+2025-07-14 08:48:20.261 +03:00 [INF] CORS policy execution successful.
+2025-07-14 08:48:20.264 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantBranchesController.CreateBranch (ApiLib)'
+2025-07-14 08:48:20.272 +03:00 [INF] Route matched with {action = "CreateBranch", controller = "MerchantBranches"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateBranch(CommonLib.Dtos.Requests.MerchantBranchRequest) on controller ApiLib.Controllers.MerchantBranchesController (ApiLib).
+2025-07-14 08:48:20.275 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:20.276 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:20.278 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:48:20.279 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:48:20.294 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:48:20.340 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:48:20.343 +03:00 [INF] Executed action ApiLib.Controllers.MerchantBranchesController.CreateBranch (ApiLib) in 68.4011ms
+2025-07-14 08:48:20.345 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantBranchesController.CreateBranch (ApiLib)'
+2025-07-14 08:48:20.346 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"message":"Branchcreatedsuccessfully"}
+2025-07-14 08:48:20.348 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/MerchantBranches/create - 200 null application/json; charset=utf-8 112.3087ms
+2025-07-14 08:48:30.242 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/21/with-branches - null null
+2025-07-14 08:48:30.259 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/21/with-branches
+QueryString: 
+2025-07-14 08:48:30.267 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib)'
+2025-07-14 08:48:30.273 +03:00 [INF] Route matched with {action = "GetMerchantWithBranches", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMerchantWithBranches(Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:48:30.276 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:30.278 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:30.280 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:48:30.283 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:48:30.286 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:48:30.301 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:48:30.305 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib) in 28.775ms
+2025-07-14 08:48:30.307 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantWithBranches (ApiLib)'
+2025-07-14 08:48:30.308 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":{"merchantId":21,"merchantName_Ar":"بنك","merchantName_En":"Bank","branches":[{"id":22,"branchName_Ar":"الفرع الرئيسي","branchName_En":"Main Branch","address":"King Abdullah Street, Riyadh, Saudi Arabia","status":"Active"}]}
+2025-07-14 08:48:30.310 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/21/with-branches - 200 null application/json; charset=utf-8 67.7108ms
+2025-07-14 08:48:48.803 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/21/main-branch - null null
+2025-07-14 08:48:48.816 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/21/main-branch
+QueryString: 
+2025-07-14 08:48:48.820 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantMainBranch (ApiLib)'
+2025-07-14 08:48:48.827 +03:00 [INF] Route matched with {action = "GetMerchantMainBranch", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMerchantMainBranch(Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:48:48.832 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:48.834 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:48:48.835 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:48:48.837 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:48:48.838 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:48:48.860 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:48:48.867 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.GetMerchantMainBranch (ApiLib) in 34.7902ms
+2025-07-14 08:48:48.869 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.GetMerchantMainBranch (ApiLib)'
+2025-07-14 08:48:48.870 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":{"id":22,"branchName_Ar":"الفرع الرئيسي","branchName_En":"Main Branch","address":"King Abdullah Street, Riyadh, Saudi Arabia","status":"Active"}}
+2025-07-14 08:48:48.872 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/21/main-branch - 200 null application/json; charset=utf-8 68.6783ms
+2025-07-14 08:52:10.477 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/search?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch - null null
+2025-07-14 08:52:10.505 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/search
+QueryString: ?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch
+2025-07-14 08:52:10.510 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.SearchMerchants (ApiLib)'
+2025-07-14 08:52:10.521 +03:00 [INF] Route matched with {action = "SearchMerchants", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchMerchants(System.String, System.String, Int32, System.String) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:52:10.525 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:52:10.527 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:52:10.531 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:52:10.534 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:52:10.538 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:52:10.578 +03:00 [INF] Found 1 merchants.
+2025-07-14 08:52:10.584 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 08:52:10.589 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.SearchMerchants (ApiLib) in 64.4032ms
+2025-07-14 08:52:10.591 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.SearchMerchants (ApiLib)'
+2025-07-14 08:52:10.592 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"data":[{"id":21,"name_Ar":"بنك","name_En":"Bank","businessType":2147483647,"managerName":"shouqJamal","status":"Active"}]}
+2025-07-14 08:52:10.594 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/search?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch - 200 null application/json; charset=utf-8 116.8795ms
+2025-07-14 08:52:47.243 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/api/Merchants/search/pdf?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch - null null
+2025-07-14 08:52:47.258 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/search/pdf
+QueryString: ?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch
+2025-07-14 08:52:47.264 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.SearchMerchantsPdf (ApiLib)'
+2025-07-14 08:52:47.274 +03:00 [INF] Route matched with {action = "SearchMerchantsPdf", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchMerchantsPdf(System.String, System.String, Int32, System.String) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 08:52:47.282 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:52:47.283 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzE2MjMsImV4cCI6MTc1MjQ3MjgyMywiaWF0IjoxNzUyNDcxNjIzLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.OZaLrArfcKYA1RNMZfWE3gQ9tKNQmLpLwZ7dK_0kbDE
+2025-07-14 08:52:47.286 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 08:52:47.291 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 08:52:47.294 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 08:52:47.328 +03:00 [INF] Found 1 merchants.
+2025-07-14 08:52:47.392 +03:00 [ERR] ErrorgeneratingPDFforsearchwithparameters: Bank, 0551234567, 101, Main Branch
+System.InvalidOperationException: Failed to generate PDF.
+ ---> System.AggregateException: One or more errors occurred. (Unable to load DLL 'libwkhtmltox' or one of its dependencies: The specified module could not be found. (0x8007007E))
+ ---> System.DllNotFoundException: Unable to load DLL 'libwkhtmltox' or one of its dependencies: The specified module could not be found. (0x8007007E)
+   at DinkToPdf.WkHtmlToXBindings.wkhtmltopdf_init(Int32 useGraphics)
+   at DinkToPdf.PdfTools.Load()
+   at DinkToPdf.BasicConverter.Convert(IDocument document)
+   at DinkToPdf.SynchronizedConverter.<>n__0(IDocument document)
+   at DinkToPdf.SynchronizedConverter.<>c__DisplayClass5_0.<Convert>b__0()
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+   --- End of inner exception stack trace ---
+   at DinkToPdf.SynchronizedConverter.Invoke[TResult](Func`1 delegate)
+   at DinkToPdf.SynchronizedConverter.Convert(IDocument document)
+   at CommonLib.Utils.PdfGenerator.<>c__DisplayClass2_0.<GeneratePdfAsync>b__0() in C:\Users\HP\Desktop\MerchantsManagemt\CommonLib\Utils\PdfGenerator.cs:line 51
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at CommonLib.Utils.PdfGenerator.GeneratePdfAsync(String htmlContent) in C:\Users\HP\Desktop\MerchantsManagemt\CommonLib\Utils\PdfGenerator.cs:line 51
+   --- End of inner exception stack trace ---
+   at CommonLib.Utils.PdfGenerator.GeneratePdfAsync(String htmlContent) in C:\Users\HP\Desktop\MerchantsManagemt\CommonLib\Utils\PdfGenerator.cs:line 55
+   at ApiLib.Controllers.MerchantsController.SearchMerchantsPdf(String name, String mobile, Int32 cityId, String branchName) in C:\Users\HP\Desktop\MerchantsManagemt\ApiLib\Controllers\MerchantsController.cs:line 145
+2025-07-14 08:52:47.568 +03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.BadRequestObjectResult'.
+2025-07-14 08:52:47.595 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.SearchMerchantsPdf (ApiLib) in 312.6183ms
+2025-07-14 08:52:47.601 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.SearchMerchantsPdf (ApiLib)'
+2025-07-14 08:52:47.603 +03:00 [INF] HTTP Response Information:
+Status Code: 500
+Response Body: {"value":{"success":false,"errorCode":500,"errorMessage":{"name":"InternalServerError","value":"InternalServerError","resourceNotFound":true,"searchedLocation":"ApiLib.Resources.Controllers.MerchantsController"}},"formatters":[],"contentTypes":[],"declaredType":null,"statusCode":400}
+2025-07-14 08:52:47.606 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/api/Merchants/search/pdf?name=Bank&mobile=0551234567&cityId=101&branchName=Main%20Branch - 500 null application/json; charset=utf-8 362.7497ms
+2025-07-14 09:08:02.319 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7240/api/Merchants/change-group/21?newGroupId=24 - null 0
+2025-07-14 09:08:02.331 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/change-group/21
+QueryString: ?newGroupId=24
+2025-07-14 09:08:02.471 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/14/2025 6:00:23 AM', Current time (UTC): '7/14/2025 6:08:02 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-14 09:08:02.495 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/14/2025 6:00:23 AM', Current time (UTC): '7/14/2025 6:08:02 AM'.
+2025-07-14 09:08:02.507 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-14 09:08:02.529 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-14 09:08:02.532 +03:00 [INF] HTTP Response Information:
+Status Code: 401
+Response Body: 
+2025-07-14 09:08:02.534 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7240/api/Merchants/change-group/21?newGroupId=24 - 401 0 null 214.8255ms
+2025-07-14 09:09:20.704 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7240/api/Auth/login - application/json 65
+2025-07-14 09:09:20.716 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Auth/login
+QueryString: 
+2025-07-14 09:09:20.720 +03:00 [INF] Request Body: {
+  "username": "shouqJamal",
+  "password": "SHOUQ*shouq!2003$"
+}
+2025-07-14 09:09:20.725 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/14/2025 6:00:23 AM', Current time (UTC): '7/14/2025 6:09:20 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-14 09:09:20.735 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/14/2025 6:00:23 AM', Current time (UTC): '7/14/2025 6:09:20 AM'.
+2025-07-14 09:09:20.739 +03:00 [INF] CORS policy execution successful.
+2025-07-14 09:09:20.742 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.AuthController.Login (ApiLib)'
+2025-07-14 09:09:20.745 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CommonLib.Dtos.Requests.LoginRequest) on controller ApiLib.Controllers.AuthController (ApiLib).
+2025-07-14 09:09:20.756 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 09:09:20.972 +03:00 [INF] Generating token for user shouqJamal
+2025-07-14 09:09:20.980 +03:00 [INF] JWT generated successfully for user: shouqJamal, Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho
+2025-07-14 09:09:20.986 +03:00 [INF] User shouqJamal logged in successfully.
+2025-07-14 09:09:20.989 +03:00 [INF] Executing OkObjectResult, writing value of type 'CommonLib.Dtos.Responses.UserWithTokenResponse'.
+2025-07-14 09:09:20.994 +03:00 [INF] Executed action ApiLib.Controllers.AuthController.Login (ApiLib) in 240.4738ms
+2025-07-14 09:09:20.998 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.AuthController.Login (ApiLib)'
+2025-07-14 09:09:21.002 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"id":28,"username":"shouqJamal","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho"}
+2025-07-14 09:09:21.006 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7240/api/Auth/login - 200 null application/json; charset=utf-8 302.5474ms
+2025-07-14 09:09:47.487 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7240/api/Merchants/change-group/21?newGroupId=24 - null 0
+2025-07-14 09:09:47.508 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/change-group/21
+QueryString: ?newGroupId=24
+2025-07-14 09:09:47.513 +03:00 [INF] CORS policy execution successful.
+2025-07-14 09:09:47.518 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.ChangeMerchantGroupId (ApiLib)'
+2025-07-14 09:09:47.533 +03:00 [INF] Route matched with {action = "ChangeMerchantGroupId", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ChangeMerchantGroupId(Int32, Int32) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 09:09:47.542 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho
+2025-07-14 09:09:47.545 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho
+2025-07-14 09:09:47.548 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 09:09:47.549 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 09:09:47.551 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 09:09:47.670 +03:00 [INF] Group ID changed successfully for merchant with Id: 21
+2025-07-14 09:09:47.679 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 09:09:47.684 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.ChangeMerchantGroupId (ApiLib) in 142.1137ms
+2025-07-14 09:09:47.686 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.ChangeMerchantGroupId (ApiLib)'
+2025-07-14 09:09:47.689 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"message":"Merchantgroupchangedsuccessfully"}
+2025-07-14 09:09:47.692 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7240/api/Merchants/change-group/21?newGroupId=24 - 200 null application/json; charset=utf-8 204.7599ms
+2025-07-14 09:11:05.718 +03:00 [INF] Request starting HTTP/2 PUT https://localhost:7240/api/Merchants/update/21 - application/json 149
+2025-07-14 09:11:05.729 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /api/Merchants/update/21
+QueryString: 
+2025-07-14 09:11:05.733 +03:00 [INF] Request Body: {
+  "name_Ar": "بنك",
+  "name_En": "Bank",
+  "businessType": 2147483647,
+  "merchantGroupId": 24,
+  "managerName": "maysMohammad",
+  "status": 0
+}
+2025-07-14 09:11:05.741 +03:00 [INF] CORS policy execution successful.
+2025-07-14 09:11:05.745 +03:00 [INF] Executing endpoint 'ApiLib.Controllers.MerchantsController.UpdateMerchantDetails (ApiLib)'
+2025-07-14 09:11:05.754 +03:00 [INF] Route matched with {action = "UpdateMerchantDetails", controller = "Merchants"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateMerchantDetails(Int32, CommonLib.Dtos.Requests.MerchantRequest) on controller ApiLib.Controllers.MerchantsController (ApiLib).
+2025-07-14 09:11:05.759 +03:00 [INF] Authorization Header received: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho
+2025-07-14 09:11:05.760 +03:00 [INF] JWT Token extracted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNob3VxSmFtYWwiLCJuYmYiOjE3NTI0NzMzNjAsImV4cCI6MTc1MjQ3NDU2MCwiaWF0IjoxNzUyNDczMzYwLCJpc3MiOiJNZXJjaGFudHNNYW5hZ2VtdCIsImF1ZCI6Ik1lcmNoYW50c01hbmFnZW10VXNlcnMifQ.Tl_NQXbtuW9Jym0GjEJ8HN8J6GIoWOjk7akZSh8l3Ho
+2025-07-14 09:11:05.763 +03:00 [INF] JWT validated successfully for user: shouqJamal
+2025-07-14 09:11:05.766 +03:00 [INF] Opened new NHibernate session.
+2025-07-14 09:11:05.773 +03:00 [INF] Setting culture to: en-US from Accept-Language header
+2025-07-14 09:11:05.791 +03:00 [INF] Merchant details updated successfully for Id: 21
+2025-07-14 09:11:05.796 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 09:11:05.798 +03:00 [INF] Executed action ApiLib.Controllers.MerchantsController.UpdateMerchantDetails (ApiLib) in 38.7771ms
+2025-07-14 09:11:05.802 +03:00 [INF] Executed endpoint 'ApiLib.Controllers.MerchantsController.UpdateMerchantDetails (ApiLib)'
+2025-07-14 09:11:05.804 +03:00 [INF] HTTP Response Information:
+Status Code: 200
+Response Body: {"success":true,"message":"Merchantupdatedsuccessfully"}
+2025-07-14 09:11:05.806 +03:00 [INF] Request finished HTTP/2 PUT https://localhost:7240/api/Merchants/update/21 - 200 null application/json; charset=utf-8 88.6ms
+2025-07-14 09:46:51.956 +03:00 [INF] Application is shutting down...

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="2" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+
+	<!-- AuthController -->
+	<data name="UsernameandPasswordarerequired" xml:space="preserve">
+    <value>اسم المستخدم وكلمة المرور مطلوبان.</value>
+  </data>
+	<data name="Invalidusernameorpassword" xml:space="preserve">
+    <value>اسم المستخدم أو كلمة المرور غير صالحة.</value>
+  </data>
+	<data name="Anerroroccurredduringlogin" xml:space="preserve">
+    <value>حدث خطأ أثناء تسجيل الدخول.</value>
+  </data>
+	<data name="UsernamePasswordAndEmailRequired" xml:space="preserve">
+  <value>اسم المستخدم وكلمة المرور والبريد الإلكتروني مطلوبة.</value>
+</data>
+	<data name="Userregisteredsuccessfully" xml:space="preserve">
+    <value>تم تسجيل المستخدم بنجاح.</value>
+  </data>
+	<data name="Registrationfailed.Reason: {Message}" xml:space="preserve">
+    <value>فشل التسجيل. السبب: {Message}</value>
+  </data>
+	<!-- MerchantBranchesController -->
+	<data name="ErrorFetchingAllBranches" xml:space="preserve">
+    <value>خطأ في جلب جميع الفروع</value>
+  </data>
+	<data name="Branchcreatedsuccessfully" xml:space="preserve">
+    <value>تم إنشاء الفرع بنجاح.</value>
+  </data>
+	<data name="Errorcreatingbranch" xml:space="preserve">
+    <value>خطأ في إنشاء الفرع</value>
+  </data>
+	<data name="Branchupdatedsuccessfully" xml:space="preserve">
+    <value>تم تحديث الفرع بنجاح.</value>
+  </data>
+	<data name="Errorupdatingbranchwithid:{Id}" xml:space="preserve">
+    <value>خطأ في تحديث الفرع بمعرف: {Id}</value>
+  </data>
+	<data name="Branchdeletedsuccessfully" xml:space="preserve">
+    <value>تم حذف الفرع بنجاح.</value>
+  </data>
+	<data name="Errordeletingbranchwithid:{Id}" xml:space="preserve">
+    <value>خطأ في حذف الفرع بمعرف: {Id}</value>
+  </data>
+	<!-- MerchantGroupsController -->
+	<data name="ErrorFetchingAllGroups" xml:space="preserve">
+    <value>خطأ في جلب جميع المجموعات</value>
+  </data>
+	<data name="ErrorFetchingActiveGroups" xml:space="preserve">
+    <value>خطأ في جلب المجموعات النشطة</value>
+  </data>
+	<data name="GroupCreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاء المجموعة بنجاح.</value>
+  </data>
+	<data name="ErrorCreatingGroup" xml:space="preserve">
+    <value>خطأ في إنشاء المجموعة</value>
+  </data>
+	<data name="GroupUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث المجموعة بنجاح.</value>
+  </data>
+	<data name="ErrorUpdatingGroupNameAr" xml:space="preserve">
+    <value>خطأ في تحديث اسم المجموعة (بالعربية) للمعرف: {id}</value>
+  </data>
+	<data name="ErrorUpdatingGroupNameEn" xml:space="preserve">
+    <value>خطأ في تحديث اسم المجموعة (بالإنجليزية) للمعرف: {id}</value>
+  </data>
+	<data name="GroupDeletedSuccessfully" xml:space="preserve">
+    <value>تم حذف المجموعة بنجاح.</value>
+  </data>
+	<data name="ErrorDeletingGroup" xml:space="preserve">
+    <value>خطأ في حذف المجموعة بمعرف: {id}</value>
+  </data>
+	<!-- MerchantsController -->
+	<data name="Merchantcreatedsuccessfully" xml:space="preserve">
+    <value>تم إنشاء التاجر بنجاح.</value>
+  </data>
+	<data name="ErrorcreatingmerchantwithName_Ar: {Name_Ar},Name_En: {Name_En}" xml:space="preserve">
+    <value>خطأ في إنشاء التاجر باسم_عربي: {Name_Ar}، اسم_إنجليزي: {Name_En}</value>
+  </data>
+	<data name="Errorfetchingactivemerchants" xml:space="preserve">
+    <value>خطأ في جلب التجار النشطين</value>
+  </data>
+	<data name="Errorfetchingmerchantsbygroupid: {GroupId}" xml:space="preserve">
+    <value>خطأ في جلب التجار حسب معرف المجموعة: {GroupId}</value>
+  </data>
+	<data name="Merchantgroupchangedsuccessfully" xml:space="preserve">
+    <value>تم تغيير مجموعة التاجر بنجاح.</value>
+  </data>
+	<data name="Errorchangingmerchantgroupformerchantid: {MerchantId}" xml:space="preserve">
+    <value>خطأ في تغيير مجموعة التاجر لمعرف التاجر: {MerchantId}</value>
+  </data>
+	<data name="Merchantupdatedsuccessfully" xml:space="preserve">
+    <value>تم تحديث التاجر بنجاح.</value>
+  </data>
+	<data name="Errorupdatingmerchantdetailsformerchantid: {MerchantId}" xml:space="preserve">
+    <value>خطأ في تحديث تفاصيل التاجر لمعرف التاجر: {MerchantId}</value>
+  </data>
+	<data name="Errorfetchingmerchantdetailsforid: {Id}" xml:space="preserve">
+    <value>خطأ في جلب تفاصيل التاجر للمعرف: {Id}</value>
+  </data>
+	<data name="Errorfetchingmerchantwithbranchesforid: {Id}" xml:space="preserve">
+    <value>خطأ في جلب التاجر مع الفروع للمعرف: {Id}</value>
+  </data>
+	<data name="Errorfetchingmainbranchformerchantid: {MerchantId}" xml:space="preserve">
+    <value>خطأ في جلب الفرع الرئيسي لمعرف التاجر: {MerchantId}</value>
+  </data>
+	<data name="Errorsearchingmerchantswithparameters: {Name}, {Mobile}, {CityId}, {BranchName}" xml:space="preserve">
+    <value>خطأ في البحث عن التجار بالمعايير: {Name}, {Mobile}, {CityId}, {BranchName}</value>
+  </data>
+	<data name="ErrorgeneratingPDFforsearchwithparameters: {Name}, {Mobile}, {CityId}, {BranchName}" xml:space="preserve">
+    <value>خطأ في إنشاء PDF للبحث بالمعايير: {Name}, {Mobile}, {CityId}, {BranchName}</value>
+  </data>
+	<data name="ErrorgeneratingPDFwithbranchesforsearchwithparameters: {Name}, {Mobile}, {CityId}, {BranchName}" xml:space="preserve">
+    <value>خطأ في إنشاء PDF مع الفروع للبحث بالمعايير: {Name}, {Mobile}, {CityId}, {BranchName}</value>
+  </data>
+</root>
