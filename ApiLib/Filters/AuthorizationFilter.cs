@@ -1,5 +1,5 @@
 ﻿using CommonLib.Configuration;
-using CommonLib.Interfaces;
+using DataLib.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -7,23 +7,26 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.IdentityModel.Tokens.Jwt;
+using NHibernate;
+using NHibernate.Linq;
+using ISession = NHibernate.ISession;
 
 namespace ApiLib.Filters
 {
+
     public class AuthorizationFilter : IAsyncAuthorizationFilter
     {
-        private readonly IJwtService _jwtService;
+        private readonly ISession _session; 
         private readonly JwtSettings _jwtSettings;
 
-        public AuthorizationFilter(IJwtService jwtService, IOptions<JwtSettings> jwtSettings)
+        public AuthorizationFilter(ISession session, IOptions<JwtSettings> jwtSettings)
         {
-            _jwtService = jwtService;
+            _session = session;
             _jwtSettings = jwtSettings.Value;
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            // ✅ Check if AllowAnonymous is applied on Controller or Action
             var endpoint = context.HttpContext.GetEndpoint();
             var allowAnonymous = endpoint?.Metadata.GetMetadata<AllowAnonymousAttribute>() != null;
 
@@ -54,10 +57,27 @@ namespace ApiLib.Filters
 
             try
             {
+                var tokenInDb = await _session.Query<LoginToken>().FirstOrDefaultAsync(t => t.Token == token && t.ExpiryDate > DateTime.UtcNow)
+                    .ConfigureAwait(false);
+
+                if (tokenInDb == null)
+                {
+                    Log.Warning("Token not found or expired in DB: {Token}", token);
+                    context.Result = new UnauthorizedObjectResult(new
+                    {
+                        type = "https://tools.ietf.org/html/rfc9110#section-15.5.2",
+                        title = "Unauthorized",
+                        status = 401,
+                        traceId = context.HttpContext.TraceIdentifier
+                    });
+                    return;
+                }
+
+                // Validate JWT Token Signature
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = System.Text.Encoding.UTF8.GetBytes(_jwtSettings.Key);
 
-                var principal = await Task.Run(() => tokenHandler.ValidateToken(token, new TokenValidationParameters
+                var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -67,7 +87,7 @@ namespace ApiLib.Filters
                     ValidAudience = _jwtSettings.Audience,
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
-                }, out SecurityToken validatedToken)).ConfigureAwait(false);
+                }, out SecurityToken validatedToken);
 
                 if (principal?.Identity == null)
                 {
@@ -86,22 +106,9 @@ namespace ApiLib.Filters
                 Log.Information("JWT validated successfully for user: {Username}", username);
                 context.HttpContext.Items["Username"] = username;
             }
-            catch (SecurityTokenException ex)
-            {
-                Log.Error(ex, "Security token validation failed for token: {Token}. Exception: {Message}, StackTrace: {StackTrace}",
-                    token, ex.Message, ex.StackTrace);
-                context.Result = new UnauthorizedObjectResult(new
-                {
-                    type = "https://tools.ietf.org/html/rfc9110#section-15.5.2",
-                    title = "Unauthorized",
-                    status = 401,
-                    traceId = context.HttpContext.TraceIdentifier
-                });
-            }
             catch (Exception ex)
             {
-                Log.Error(ex, "Failed to validate JWT token: {Token}. Exception: {Message}, StackTrace: {StackTrace}",
-                    token, ex.Message, ex.StackTrace);
+                Log.Error(ex, "Failed to validate JWT token: {Token}.", token);
                 context.Result = new UnauthorizedObjectResult(new
                 {
                     type = "https://tools.ietf.org/html/rfc9110#section-15.5.2",

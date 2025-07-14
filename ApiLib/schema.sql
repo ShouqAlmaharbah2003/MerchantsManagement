@@ -1,4 +1,6 @@
 
+    drop table LOGIN_TOKENS_SHOUQ cascade constraints;
+
     drop table MERCHANT_BRANCHES_SHOUQ cascade constraints;
 
     drop table MERCHANT_GROUPS_SHOUQ cascade constraints;
@@ -7,6 +9,8 @@
 
     drop table USERS_SHOUQ cascade constraints;
 
+    drop sequence hibernate_sequence;
+
     drop sequence SEQ_MERCHANT_BRANCHES_SHOUQ;
 
     drop sequence SEQ_MERCHANT_GROUPS_SHOUQ;
@@ -14,6 +18,15 @@
     drop sequence SEQ_MERCHANTS_SHOUQ;
 
     drop sequence SEQ_USERS_SHOUQ;
+
+    create table LOGIN_TOKENS_SHOUQ (
+        Id NUMBER(10,0) not null,
+       UserId NUMBER(10,0) not null,
+       Token VARCHAR2(4000) not null,
+       ExpiryDate TIMESTAMP(7) not null,
+       CreatedAt TIMESTAMP(7) default SYSDATE  not null,
+       primary key (Id)
+    );
 
     create table MERCHANT_BRANCHES_SHOUQ (
         Id NUMBER(10,0) not null,
@@ -87,6 +100,8 @@
         add constraint FK_A9DCAB92 
         foreign key (MERCHANT_GROUP_ID) 
         references MERCHANT_GROUPS_SHOUQ;
+
+    create sequence hibernate_sequence;
 
     create sequence SEQ_MERCHANT_BRANCHES_SHOUQ;
 

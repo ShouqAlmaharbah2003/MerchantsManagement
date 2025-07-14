@@ -28,6 +28,7 @@ namespace DataLib.NHibernate
                         m.FluentMappings.AddFromAssemblyOf<MerchantMap>();
                         m.FluentMappings.AddFromAssemblyOf<MerchantBranchMap>();
                         m.FluentMappings.AddFromAssemblyOf<MerchantGroupMap>();
+                        m.FluentMappings.AddFromAssemblyOf<LoginTokenMap>();
                     })
                     .ExposeConfiguration(cfg =>
                     {

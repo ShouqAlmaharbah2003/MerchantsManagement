@@ -43,16 +43,31 @@ namespace CommonLib.Services
                 throw new UnauthorizedAccessException("Invalid username or password.");
             }
 
-                Log.Information("Generating token for user {Username}", dto.Username);
-                var token = await _jwtService.GenerateTokenAsync(user.Username).ConfigureAwait(false);
-                Log.Information("User {Username} logged in successfully.", dto.Username);
+            // Generate JWT Token
+            Log.Information("Generating token for user {Username}", dto.Username);
+            var token = await _jwtService.GenerateTokenAsync(user.Username).ConfigureAwait(false);
 
-                return new UserWithTokenResponse
-                {
-                    Id = user.Id,
-                    Username = user.Username,
-                    Token = token
-                };
+            // Save Token in LoginTokens table
+            var loginToken = new LoginToken
+            {
+                UserId = user.Id,
+                Token = token,
+                ExpiryDate = DateTime.UtcNow.AddMinutes(60),
+                CreatedAt = DateTime.UtcNow
+            };
+
+            using var transaction = _session.BeginTransaction();
+            await _session.SaveAsync(loginToken).ConfigureAwait(false);
+            await transaction.CommitAsync();
+
+            Log.Information("User {Username} logged in and token saved successfully.", dto.Username);
+
+            return new UserWithTokenResponse
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Token = token
+            };
         }
 
         public async Task<User> RegisterAsync(RegisterRequest dto)
@@ -89,7 +104,7 @@ namespace CommonLib.Services
                 var transaction = _session.BeginTransaction();
                 
                     await _repository.SaveAsync(user).ConfigureAwait(false);
-                await transaction.CommitAsync();
+                    await transaction.CommitAsync();
                     Log.Information("User {Username} registered successfully.", dto.Username);
                 return user;
         }
