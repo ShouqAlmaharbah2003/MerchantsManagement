@@ -1,7 +1,5 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
-using System;
-using System.Threading.Tasks;
 using ColorMode = DinkToPdf.ColorMode;
 using PaperKind = DinkToPdf.PaperKind;
 

@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
 using System.Net;
-using System.Threading.Tasks;
 using CommonLib.Enums;
 
 namespace ApiLib.Middleware

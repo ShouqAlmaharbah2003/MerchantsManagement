@@ -2,10 +2,6 @@
 using DataLib.Interfaces;
 using NHibernate;
 using NHibernate.Linq;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DataLib.Repositories
 {

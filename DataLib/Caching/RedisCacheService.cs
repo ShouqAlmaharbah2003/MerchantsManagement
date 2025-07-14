@@ -1,8 +1,6 @@
 ﻿using StackExchange.Redis;
 using System.Text.Json;
 using Serilog;
-using System;
-using System.Threading.Tasks;
 
 namespace DataLib.Caching
 {

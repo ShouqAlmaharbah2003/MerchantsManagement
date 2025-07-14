@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Serilog;
-using System;
 using System.Globalization;
-using System.Linq;
 
 namespace ApiLib.Filters
 {

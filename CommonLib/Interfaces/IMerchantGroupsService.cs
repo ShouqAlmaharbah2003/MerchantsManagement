@@ -1,7 +1,5 @@
 ﻿using CommonLib.Dtos.Requests;
 using CommonLib.Dtos.Responses;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CommonLib.Interfaces
 {

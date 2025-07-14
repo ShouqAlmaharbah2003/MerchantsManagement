@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace CommonLib.Interfaces
+﻿namespace CommonLib.Interfaces
 {
     public interface IJwtService
     {

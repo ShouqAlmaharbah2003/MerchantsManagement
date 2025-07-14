@@ -6,8 +6,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Serilog;
-using System;
-using System.Threading.Tasks;
 
 namespace CommonLib.Services
 {

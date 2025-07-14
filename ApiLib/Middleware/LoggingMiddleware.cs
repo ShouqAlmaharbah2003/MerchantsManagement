@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Serilog;
-using System.IO;
+﻿using Serilog;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ApiLib.Middleware
 {

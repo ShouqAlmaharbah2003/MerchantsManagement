@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace DataLib.Interfaces
+﻿namespace DataLib.Interfaces
 {
     public interface IRepository<T>
     {
