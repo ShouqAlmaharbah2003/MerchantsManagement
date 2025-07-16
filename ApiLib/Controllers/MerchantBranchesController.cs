@@ -3,6 +3,7 @@ using CommonLib.Enums;
 using CommonLib.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace ApiLib.Controllers
 {
@@ -11,14 +12,17 @@ namespace ApiLib.Controllers
     public class MerchantBranchesController : SecureController
     {
         private readonly IMerchantBranchesService _service;
+        private readonly IStringLocalizer<MerchantBranchesController> _localizer;
         private readonly ILogger<MerchantBranchesController> _logger;
         public MerchantBranchesController(
             IMerchantBranchesService service,
             ILocalizationService localizationService,
+            IStringLocalizer<MerchantBranchesController> localizer,
             ILogger<MerchantBranchesController> logger)
             : base(localizationService)
         {
             _service = service;
+            localizer = _localizer;
             _logger = logger;
         }
 
@@ -26,17 +30,17 @@ namespace ApiLib.Controllers
         public async Task<IActionResult> CreateBranch([FromBody] MerchantBranchRequest dto)
         {
             if (dto == null)
-                return Error(ErrorCodes.ValidationError);
+                return Error(ErrorCodes.ValidationError);// _localizer["ValidationError"].Value);
 
             try
             {
                 await _service.CreateBranchAsync(dto).ConfigureAwait(false);
-                return Success("Branch created successfully.");
+                return Success("Branch created successfully.");// _localizer["BranchCreatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating branch.");
-                return Error("An error occurred while creating the branch.", 500);
+                return Error("An error occurred while creating the branch.", 500);// _localizer["BranchCreationError"].Value);
             }
         }
 
@@ -46,12 +50,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetAllBranchesAsync().ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["BranchesFetchedSuccessfully"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching all branches.");
-                return Error("An error occurred while fetching branches.", 500);
+                return Error("An error occurred while fetching branches.", 500);// _localizer["BranchesFetchError"].Value);
             }
         }
 
@@ -59,17 +63,17 @@ namespace ApiLib.Controllers
         public async Task<IActionResult> UpdateBranch(int id, [FromBody] MerchantBranchRequest dto)
         {
             if (dto == null)
-                return Error(ErrorCodes.ValidationError);
+                return Error(ErrorCodes.ValidationError);// _localizer["ValidationError"].Value);
 
             try
             {
                 await _service.UpdateBranchAsync(id, dto).ConfigureAwait(false);
-                return Success("Branch updated successfully.");
+                return Success("Branch updated successfully.");// _localizer["BranchUpdatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating branch with ID: {Id}", id);
-                return Error($"An error occurred while updating branch with ID: {id}", 500);
+                return Error($"An error occurred while updating branch with ID: {id}", 500);// _localizer["BranchUpdateError"].Value);
             }
         }
 
@@ -79,12 +83,12 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.DeleteBranchAsync(id).ConfigureAwait(false);
-                return Success("Branch deleted successfully.");
+                return Success("Branch deleted successfully.");// _localizer["BranchDeletedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error deleting branch with ID: {Id}", id);
-                return Error($"An error occurred while deleting branch with ID: {id}", 500);
+                return Error($"An error occurred while deleting branch with ID: {id}", 500);// _localizer["BranchDeletionError"].Value);
             }
         }
     }

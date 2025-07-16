@@ -1,0 +1,26 @@
+html[lang="ar-SA"] {
+    direction: rtl;
+    text-align: right;
+    font-family: Arial, sans-serif;
+}
+
+    html[lang="ar-SA"] .swagger-ui .topbar,
+    html[lang="ar-SA"] .swagger-ui .info,
+    html[lang="ar-SA"] .swagger-ui .scheme-container {
+        direction: rtl;
+    }
+
+    html[lang="ar-SA"] .swagger-ui .opblock .opblock-summary {
+        flex-direction: row-reverse;
+    }
+
+    html[lang="ar-SA"] .swagger-ui .opblock .opblock-summary-method {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+
+html[lang="en-US"] {
+    direction: ltr;
+    text-align: left;
+    font-family: Arial, sans-serif;
+}

@@ -3,6 +3,7 @@ using CommonLib.Enums;
 using CommonLib.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace ApiLib.Controllers
 {
@@ -11,14 +12,17 @@ namespace ApiLib.Controllers
     public class MerchantGroupsController : SecureController
     {
         private readonly IMerchantGroupsService _service;
+        private readonly IStringLocalizer<MerchantGroupsController> _localizer;
         private readonly ILogger<MerchantGroupsController> _logger;
         public MerchantGroupsController(
             IMerchantGroupsService service,
             ILocalizationService localizationService,
+            IStringLocalizer<MerchantGroupsController> localizer,
             ILogger<MerchantGroupsController> logger)
             : base(localizationService)
         {
             _service = service;
+            _localizer = localizer;
             _logger = logger;
         }
 
@@ -26,17 +30,17 @@ namespace ApiLib.Controllers
         public async Task<IActionResult> CreateGroup([FromBody] MerchantGroupRequest dto)
         {
             if (dto == null)
-                return Error(ErrorCodes.ValidationError);
+                return Error(ErrorCodes.ValidationError);// _localizer["ValidationError"].Value);
 
             try
             {
                 await _service.CreateGroupAsync(dto).ConfigureAwait(false);
-                return Success("Group created successfully.");
+                return Success("Group created successfully.");// _localizer["GroupCreatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating group.");
-                return Error("An error occurred while creating the group.", 500);
+                return Error("An error occurred while creating the group.", 500);// _localizer["GroupCreationError"].Value);
             }
         }
 
@@ -46,12 +50,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetAllGroupsAsync().ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["GroupsFetchedSuccessfully"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching all groups.");
-                return Error("An error occurred while fetching groups.", 500);
+                return Error("An error occurred while fetching groups.", 500);// _localizer["GroupsFetchError"].Value);
             }
         }
 
@@ -61,12 +65,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetActiveGroupsAsync().ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["ActiveGroupsFetchedSuccessfully"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching active groups.");
-                return Error("An error occurred while fetching active groups.", 500);
+                return Error("An error occurred while fetching active groups.", 500);// _localizer["ActiveGroupsFetchError"].Value);
             }
         }
 
@@ -74,7 +78,7 @@ namespace ApiLib.Controllers
         public async Task<IActionResult> UpdateGroupName(int id, [FromQuery] string newName, [FromQuery] string language)
         {
             if (string.IsNullOrWhiteSpace(newName) || string.IsNullOrWhiteSpace(language))
-                return Error(ErrorCodes.ValidationError);
+                return Error(ErrorCodes.ValidationError);// _localizer["ValidationError"].Value);
 
             try
             {
@@ -88,15 +92,15 @@ namespace ApiLib.Controllers
                 }
                 else
                 {
-                    return Error("Invalid language specified. Use 'ar' or 'en'.", 400);
+                    return Error("Invalid language specified. Use 'ar' or 'en'.", 400);// _localizer["InvalidLanguage"].Value);
                 }
 
-                return Success("Group name updated successfully.");
+                return Success("Group name updated successfully.");// _localizer["GroupNameUpdatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating group name for ID: {Id}", id);
-                return Error($"An error occurred while updating group name for ID: {id}", 500);
+                return Error($"An error occurred while updating group name for ID: {id}", 500);// _localizer["GroupNameUpdateError"].Value);
             }
         }
 
@@ -106,12 +110,12 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.DeleteGroupAsync(id).ConfigureAwait(false);
-                return Success("Group deleted successfully.");
+                return Success("Group deleted successfully.");// _localizer["GroupDeletedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error deleting group with ID: {Id}", id);
-                return Error($"An error occurred while deleting group with ID: {id}", 500);
+                return Error($"An error occurred while deleting group with ID: {id}", 500);// _localizer["GroupDeletionError"].Value);
             }
         }
     }

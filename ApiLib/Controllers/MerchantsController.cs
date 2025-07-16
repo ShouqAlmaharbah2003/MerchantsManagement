@@ -2,6 +2,7 @@
 using CommonLib.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace ApiLib.Controllers
 {
@@ -10,15 +11,19 @@ namespace ApiLib.Controllers
     public class MerchantsController : SecureController
     {
         private readonly IMerchantsService _service;
+        private readonly IStringLocalizer<MerchantsController> _localizer;
         private readonly ILogger<MerchantsController> _logger;
+
         public MerchantsController(
             IMerchantsService service,
             ILocalizationService localizationService,
+            IStringLocalizer<MerchantsController> localizer,
             ILogger<MerchantsController> logger)
             : base(localizationService)
         {
             _service = service;
             _logger = logger;
+            _localizer = localizer;
         }
 
         [HttpPost("create")]
@@ -27,12 +32,12 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.CreateMerchantAsync(dto).ConfigureAwait(false);
-                return Success("Merchant created successfully.");
+                return Success("Merchant created successfully.");// _localizer["MerchantCreatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating merchant with Name_Ar: {Name_Ar}, Name_En: {Name_En}", dto.Name_Ar, dto.Name_En);
-                return Error("An error occurred while creating the merchant.", 500);
+                return Error("An error occurred while creating the merchant.", 500);// _localizer["MerchantCreationError"].Value);
             }
         }
 
@@ -42,12 +47,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetActiveMerchantsAsync().ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["ActiveMerchantsFetchedSuccessfully"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching active merchants.");
-                return Error("An error occurred while fetching active merchants.", 500);
+                return Error("An error occurred while fetching active merchants.", 500);// _localizer["ActiveMerchantsFetchError"].Value);
             }
         }
 
@@ -57,12 +62,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantsByGroupIdAsync(groupId).ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["MerchantsFetchedByGroupId"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchants by group id: {GroupId}", groupId);
-                return Error($"An error occurred while fetching merchants for group ID: {groupId}", 500);
+                return Error($"An error occurred while fetching merchants for group ID: {groupId}", 500);// _localizer["MerchantsFetchByGroupError"].Value);
             }
         }
 
@@ -72,12 +77,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantDetailsByIdAsync(id).ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["MerchantDetailsFetched"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchant details for id: {Id}", id);
-                return Error($"An error occurred while fetching details for merchant ID: {id}", 500);
+                return Error($"An error occurred while fetching details for merchant ID: {id}", 500);// _localizer["MerchantDetailsFetchError"].Value);
             }
         }
 
@@ -87,12 +92,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantWithBranchesAsync(id).ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["MerchantWithBranchesFetched"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchant with branches for id: {Id}", id);
-                return Error($"An error occurred while fetching merchant branches for ID: {id}", 500);
+                return Error($"An error occurred while fetching merchant branches for ID: {id}", 500);// _localizer["MerchantBranchesFetchError"].Value);
             }
         }
 
@@ -102,12 +107,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantMainBranchAsync(merchantId).ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["MainBranchFetched"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching main branch for merchant id: {MerchantId}", merchantId);
-                return Error($"An error occurred while fetching main branch for merchant ID: {merchantId}", 500);
+                return Error($"An error occurred while fetching main branch for merchant ID: {merchantId}", 500);// _localizer["MainBranchFetchError"].Value);
             }
         }
 
@@ -121,12 +126,12 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.SearchMerchantsAsync(name, mobile, cityId, branchName).ConfigureAwait(false);
-                return Success(result);
+                return Success(result);// _localizer["MerchantsSearchResults"].Value, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error searching merchants with parameters: {Name}, {Mobile}, {CityId}, {BranchName}", name, mobile, cityId, branchName);
-                return Error("An error occurred while searching merchants.", 500);
+                return Error("An error occurred while searching merchants.", 500);// _localizer["MerchantsSearchError"].Value);
             }
         }
 
@@ -176,12 +181,12 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.ChangeMerchantGroupIdAsync(merchantId, newGroupId).ConfigureAwait(false);
-                return Success("Merchant group changed successfully.");
+                return Success("Merchant group changed successfully.");// _localizer["MerchantGroupChangedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error changing merchant group for merchant id: {MerchantId}", merchantId);
-                return Error($"An error occurred while changing merchant group for ID: {merchantId}", 500);
+                return Error($"An error occurred while changing merchant group for ID: {merchantId}", 500);// _localizer["MerchantGroupChangeError"].Value);
             }
         }
 
@@ -191,12 +196,12 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.UpdateMerchantDetailsAsync(merchantId, dto).ConfigureAwait(false);
-                return Success("Merchant updated successfully.");
+                return Success("Merchant updated successfully.");// _localizer["MerchantUpdatedSuccessfully"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating merchant details for merchant id: {MerchantId}", merchantId);
-                return Error($"An error occurred while updating merchant details for ID: {merchantId}", 500);
+                return Error($"An error occurred while updating merchant details for ID: {merchantId}", 500);// _localizer["MerchantUpdateError"].Value);
             }
         }
     }

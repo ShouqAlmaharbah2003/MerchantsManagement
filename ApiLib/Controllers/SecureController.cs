@@ -58,9 +58,9 @@ namespace ApiLib.Controllers
             });
         }
 
-        protected bool IsArabic => 
+        protected bool IsArabic =>
             Request.Headers["Accept-Language"].ToString().StartsWith("ar", StringComparison.OrdinalIgnoreCase);
-        protected bool IsEnglish => 
+        protected bool IsEnglish =>
             Request.Headers["Accept-Language"].ToString().StartsWith("en", StringComparison.OrdinalIgnoreCase);
 
     }

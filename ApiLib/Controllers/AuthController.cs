@@ -3,22 +3,26 @@ using CommonLib.Enums;
 using CommonLib.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace ApiLib.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous] 
+    [AllowAnonymous]
     public class AuthController : SecureController
     {
         private readonly IUserService _userService;
+        private readonly IStringLocalizer<AuthController> _localizer;
         private readonly ILogger<AuthController> _logger;
         public AuthController(
             IUserService userService, ILogger<AuthController> logger,
+            IStringLocalizer<AuthController> localizer,
             ILocalizationService localizationService)
             : base(localizationService)
         {
             _userService = userService;
+            _localizer = localizer;
             _logger = logger;
         }
 
@@ -30,22 +34,22 @@ namespace ApiLib.Controllers
                 string.IsNullOrWhiteSpace(request.Password) ||
                 string.IsNullOrWhiteSpace(request.Email))
             {
-                return Error(ErrorCodes.ValidationError); 
+                return Error(ErrorCodes.ValidationError); // _localizer["ValidationError"].Value);
             }
 
             try
             {
                 var user = await _userService.RegisterAsync(request).ConfigureAwait(false);
-                return Success("User registered successfully.");
+                return Success("User registered successfully.");// _localizer["UserRegisteredSuccessfully"].Value, user);
             }
             catch (InvalidOperationException ex)
             {
-                return Error(ex.Message); 
+                return Error(ex.Message); // _localizer["UserAlreadyExists"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during registration.");
-                return Error("An error occurred during registration.", 500); 
+                return Error("An error occurred during registration.", 500); // _localizer["RegistrationError"].Value);
             }
         }
 
@@ -56,22 +60,22 @@ namespace ApiLib.Controllers
             if (request == null || string.IsNullOrWhiteSpace(request.Username) ||
                 string.IsNullOrWhiteSpace(request.Password))
             {
-                return Error(ErrorCodes.ValidationError); 
+                return Error(ErrorCodes.ValidationError); // _localizer["ValidationError"].Value);
             }
 
             try
             {
                 var userResponse = await _userService.LoginAsync(request).ConfigureAwait(false);
-                return Success(userResponse); 
+                return Success(userResponse); // _localizer["LoginSuccessful"].Value, userResponse);
             }
             catch (UnauthorizedAccessException)
             {
-                return UnauthorizedError("Invalid username or password.");
+                return UnauthorizedError("Invalid username or password."); // _localizer["InvalidUsernameOrPassword"].Value);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during login.");
-                return Error("An error occurred during login.", 500); 
+                return Error("An error occurred during login.", 500); // _localizer["LoginError"].Value);
             }
         }
     }

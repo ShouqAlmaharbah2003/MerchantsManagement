@@ -1,0 +1,42 @@
+2025-07-16 11:14:30.304 +03:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 11:14:30.477 +03:00 [WRN] The WebRootPath was not found: C:\Users\HP\Desktop\MerchantsManagemt\ApiLib\wwwroot. Static files may be unavailable.
+2025-07-16 11:14:30.488 +03:00 [WRN] The WebRootPath was not found: C:\Users\HP\Desktop\MerchantsManagemt\ApiLib\wwwroot. Static files may be unavailable.
+2025-07-16 11:14:30.654 +03:00 [INF] Now listening on: https://localhost:7240
+2025-07-16 11:14:30.688 +03:00 [INF] Now listening on: http://localhost:5030
+2025-07-16 11:14:30.801 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 11:14:30.807 +03:00 [INF] Hosting environment: Development
+2025-07-16 11:14:30.810 +03:00 [INF] Content root path: C:\Users\HP\Desktop\MerchantsManagemt\ApiLib
+2025-07-16 11:14:33.310 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/swagger/index.html - null null
+2025-07-16 11:14:33.727 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /swagger/index.html
+QueryString: 
+2025-07-16 11:14:33.878 +03:00 [INF] HTTP Response Information:
+Status Code: 404
+Response Body: 
+2025-07-16 11:14:33.888 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/swagger/index.html - 404 0 null 584.552ms
+2025-07-16 11:14:33.923 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7240/swagger/index.html, Response status code: 404
+2025-07-16 11:15:24.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/swagger/index.html - null null
+2025-07-16 11:15:24.265 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /swagger/index.html
+QueryString: 
+2025-07-16 11:15:24.273 +03:00 [INF] HTTP Response Information:
+Status Code: 404
+Response Body: 
+2025-07-16 11:15:24.276 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/swagger/index.html - 404 0 null 24.779ms
+2025-07-16 11:15:24.284 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7240/swagger/index.html, Response status code: 404
+2025-07-16 11:15:27.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7240/swagger/index.html - null null
+2025-07-16 11:15:27.810 +03:00 [INF] HTTP Request Information:
+Schema: https
+Host: localhost:7240
+Path: /swagger/index.html
+QueryString: 
+2025-07-16 11:15:27.815 +03:00 [INF] HTTP Response Information:
+Status Code: 404
+Response Body: 
+2025-07-16 11:15:27.817 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7240/swagger/index.html - 404 0 null 27.023ms
+2025-07-16 11:15:27.828 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7240/swagger/index.html, Response status code: 404
+2025-07-16 11:15:32.852 +03:00 [INF] Application is shutting down...

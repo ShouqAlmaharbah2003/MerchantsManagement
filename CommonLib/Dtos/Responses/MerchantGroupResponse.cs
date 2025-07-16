@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace CommonLib.Dtos.Responses
 {
@@ -12,6 +13,7 @@ namespace CommonLib.Dtos.Responses
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Group name in Arabic must be between 2 and 100 characters")]
         public string Name_Ar { get; set; }
 
+        [JsonProperty("name")]
         [Required(ErrorMessage = "Group name in English is required")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Group name in English must be between 2 and 100 characters")]
         public string Name_En { get; set; }
