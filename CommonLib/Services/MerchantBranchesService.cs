@@ -76,9 +76,7 @@ namespace CommonLib.Services
                 Log.Warning("Branch not found for BranchId: {BranchId}", branchId);
                 throw new Exception("Branch not found");
             }
-
                 var transaction = _session.BeginTransaction();
-
                 await _repository.DeleteAsync(branch).ConfigureAwait(false);
                 await transaction.CommitAsync();
         }
@@ -120,9 +118,7 @@ namespace CommonLib.Services
             branch.Status = dto.Status;
             branch.UpdatedAt = DateTime.UtcNow;
 
-
                 var transaction = _session.BeginTransaction();
-
                 await _repository.UpdateAsync(branch).ConfigureAwait(false);
                 await transaction.CommitAsync();
         }

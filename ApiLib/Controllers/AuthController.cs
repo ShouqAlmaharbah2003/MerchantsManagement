@@ -13,7 +13,6 @@ namespace ApiLib.Controllers
     {
         private readonly IUserService _userService;
         private readonly ILogger<AuthController> _logger;
-
         public AuthController(
             IUserService userService, ILogger<AuthController> logger,
             ILocalizationService localizationService)

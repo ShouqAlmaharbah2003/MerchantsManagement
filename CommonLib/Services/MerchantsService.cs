@@ -54,7 +54,6 @@ namespace CommonLib.Services
                 UpdatedAt = DateTime.UtcNow
             };
                 var transaction = _session.BeginTransaction();
-
                 await _repository.SaveAsync(merchant).ConfigureAwait(false);
                 await transaction.CommitAsync();
         }
@@ -77,11 +76,9 @@ namespace CommonLib.Services
             merchant.UpdatedAt = DateTime.UtcNow;
 
                 var transaction = _session.BeginTransaction();
-
                 await _repository.UpdateAsync(merchant).ConfigureAwait(false);
                 await transaction.CommitAsync();
                 Log.Information("Group ID changed successfully for merchant with Id: {MerchantId}", merchantId);
-
                 await _cache.KeyDeleteAsync($"Merchant_{merchantId}").ConfigureAwait(false);
         }
 
@@ -384,7 +381,6 @@ namespace CommonLib.Services
             merchant.UpdatedAt = DateTime.UtcNow;
 
                 var transaction = _session.BeginTransaction();
-
                 await _repository.UpdateAsync(merchant).ConfigureAwait(false);
                 await transaction.CommitAsync();
                 Log.Information("Merchant details updated successfully for Id: {MerchantId}", merchantId);

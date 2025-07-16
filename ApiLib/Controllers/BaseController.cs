@@ -9,7 +9,6 @@ namespace ApiLib.Controllers
     public abstract class BaseController : ControllerBase
     {
         private readonly ILocalizationService _localizationService;
-
         protected BaseController(ILocalizationService localizationService)
         {
             _localizationService = localizationService;

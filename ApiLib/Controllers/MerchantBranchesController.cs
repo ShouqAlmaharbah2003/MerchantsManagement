@@ -12,7 +12,6 @@ namespace ApiLib.Controllers
     {
         private readonly IMerchantBranchesService _service;
         private readonly ILogger<MerchantBranchesController> _logger;
-
         public MerchantBranchesController(
             IMerchantBranchesService service,
             ILocalizationService localizationService,

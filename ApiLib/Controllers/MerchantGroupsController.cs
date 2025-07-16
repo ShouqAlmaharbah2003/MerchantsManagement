@@ -12,7 +12,6 @@ namespace ApiLib.Controllers
     {
         private readonly IMerchantGroupsService _service;
         private readonly ILogger<MerchantGroupsController> _logger;
-
         public MerchantGroupsController(
             IMerchantGroupsService service,
             ILocalizationService localizationService,

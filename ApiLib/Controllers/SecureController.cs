@@ -15,7 +15,6 @@ namespace ApiLib.Controllers
             : base(localizationService)
         {
         }
-
         protected IActionResult Success(object data)
         {
             return SuccessResponse(data);
@@ -58,5 +57,11 @@ namespace ApiLib.Controllers
                 ErrorMessage = message
             });
         }
+
+        protected bool IsArabic => 
+            Request.Headers["Accept-Language"].ToString().StartsWith("ar", StringComparison.OrdinalIgnoreCase);
+        protected bool IsEnglish => 
+            Request.Headers["Accept-Language"].ToString().StartsWith("en", StringComparison.OrdinalIgnoreCase);
+
     }
 }

@@ -15,7 +15,7 @@ namespace CommonLib.Services
 
         public JwtService(IOptions<JwtSettings> jwtSettings)
         {
-            _jwtSettings = jwtSettings.Value ?? throw new ArgumentNullException(nameof(jwtSettings), "JWT settings cannot be null.");
+            _jwtSettings = jwtSettings.Value;
             if (string.IsNullOrEmpty(_jwtSettings.Key))
                 throw new ArgumentException("JWT Key cannot be null or empty.", nameof(_jwtSettings.Key));
             if (Encoding.UTF8.GetBytes(_jwtSettings.Key).Length < 16)
