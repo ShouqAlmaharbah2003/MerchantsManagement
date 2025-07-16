@@ -28,17 +28,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Res.Designer.cs">
+	  <Compile Update="Resources\Res.en.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Res.resx</DependentUpon>
+	    <DependentUpon>Res.en.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Res.resx">
+	  <EmbeddedResource Update="Resources\Res.en.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Res.Designer.cs</LastGenOutput>
+	    <LastGenOutput>Res.en.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 
