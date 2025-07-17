@@ -29,7 +29,6 @@ var app = builder.Build();
 // Middleware & Routing
 // ------------------------------
 app.UseRequestLocalization();
-app.UseStaticFiles();
 app.UseMiddleware<ApiLib.Middleware.LoggingMiddleware>();
 app.UseRouting();
 app.UseHttpsRedirection();

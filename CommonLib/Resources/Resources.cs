@@ -1,6 +1,6 @@
 ﻿namespace CommonLib.Resources
 {
-    internal class Resources
+    public class Resources
     {
     }
 }

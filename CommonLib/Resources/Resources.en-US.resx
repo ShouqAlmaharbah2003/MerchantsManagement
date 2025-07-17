@@ -117,17 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActiveGroupsFetchedSuccessfully" xml:space="preserve">
+    <value>Active groups fetched successfully</value>
+  </data>
+  <data name="ActiveGroupsFetchError" xml:space="preserve">
+    <value>An error occurred while fetching active groups</value>
+  </data>
+  <data name="ActiveMerchantsFetchedSuccessfully" xml:space="preserve">
+    <value>Active merchants fetched successfully</value>
+  </data>
+  <data name="ActiveMerchantsFetchError" xml:space="preserve">
+    <value>An error occurred while fetching active merchants</value>
+  </data>
   <data name="Anerroroccurredduringlogin" xml:space="preserve">
     <value>An error occurred during login</value>
   </data>
   <data name="Branchcreatedsuccessfully" xml:space="preserve">
     <value>Branch created successfully</value>
   </data>
+  <data name="BranchCreationError" xml:space="preserve">
+    <value>An error occurred while creating the branch</value>
+  </data>
   <data name="Branchdeletedsuccessfully" xml:space="preserve">
     <value>Branch deleted successfully</value>
   </data>
+  <data name="BranchesFetchedSuccessfully" xml:space="preserve">
+    <value>All branches fetched successfully</value>
+  </data>
+  <data name="BranchesFetchError" xml:space="preserve">
+    <value>An error occurred while fetching branches</value>
+  </data>
   <data name="Branchupdatedsuccessfully" xml:space="preserve">
     <value>Branch updated successfully</value>
+  </data>
+  <data name="BranchUpdateError" xml:space="preserve">
+    <value>An error occurred while updating branch with ID: {0}</value>
   </data>
   <data name="Errorchangingmerchantgroupformerchantid" xml:space="preserve">
     <value>Error changing merchant group for merchant id</value>
@@ -192,26 +216,98 @@
   <data name="GroupCreatedSuccessfully" xml:space="preserve">
     <value>Group created successfully</value>
   </data>
+  <data name="GroupCreationError" xml:space="preserve">
+    <value>An error occurred while creating the group</value>
+  </data>
   <data name="GroupDeletedSuccessfully" xml:space="preserve">
     <value>Group deleted successfully</value>
+  </data>
+  <data name="GroupDeletionError" xml:space="preserve">
+    <value>An error occurred while deleting group with ID: {0}</value>
+  </data>
+  <data name="GroupNameUpdatedSuccessfully" xml:space="preserve">
+    <value>Group name updated successfully</value>
+  </data>
+  <data name="GroupNameUpdateError" xml:space="preserve">
+    <value>An error occurred while updating group name for ID: {0}</value>
+  </data>
+  <data name="GroupsFetchedSuccessfully" xml:space="preserve">
+    <value>All groups fetched successfully</value>
+  </data>
+  <data name="GroupsFetchError" xml:space="preserve">
+    <value>An error occurred while fetching groups</value>
   </data>
   <data name="GroupUpdatedSuccessfully" xml:space="preserve">
     <value>Group updated successfully</value>
   </data>
+  <data name="InvalidLanguage" xml:space="preserve">
+    <value>Invalid language specified. Use 'ar' or 'en'</value>
+  </data>
   <data name="Invalidusernameorpassword" xml:space="preserve">
     <value>Invalid username or password</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>An error occurred during login</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Login successful</value>
+  </data>
+  <data name="MainBranchFetched" xml:space="preserve">
+    <value>Main branch fetched successfully</value>
+  </data>
+  <data name="MainBranchFetchError" xml:space="preserve">
+    <value>An error occurred while fetching main branch for merchant ID: {0}</value>
+  </data>
+  <data name="MerchantBranchesFetchError" xml:space="preserve">
+    <value>An error occurred while fetching merchant branches for ID: {0}</value>
   </data>
   <data name="Merchantcreatedsuccessfully" xml:space="preserve">
     <value>Merchant created successfully</value>
   </data>
+  <data name="MerchantCreationError" xml:space="preserve">
+    <value>An error occurred while creating the merchant</value>
+  </data>
+  <data name="MerchantDetailsFetched" xml:space="preserve">
+    <value>Merchant details fetched successfully</value>
+  </data>
+  <data name="MerchantDetailsFetchError" xml:space="preserve">
+    <value>An error occurred while fetching details for merchant ID: {0}</value>
+  </data>
   <data name="Merchantgroupchangedsuccessfully" xml:space="preserve">
     <value>Merchant group changed successfully</value>
+  </data>
+  <data name="MerchantGroupChangeError" xml:space="preserve">
+    <value>An error occurred while changing merchant group for ID: {0}</value>
+  </data>
+  <data name="MerchantsFetchByGroupError" xml:space="preserve">
+    <value>An error occurred while fetching merchants for group ID: {0}</value>
+  </data>
+  <data name="MerchantsFetchedByGroupId" xml:space="preserve">
+    <value>Merchants fetched for group ID successfully</value>
+  </data>
+  <data name="MerchantsSearchError" xml:space="preserve">
+    <value>An error occurred while searching merchants</value>
+  </data>
+  <data name="MerchantsSearchResults" xml:space="preserve">
+    <value>Merchants search results fetched successfully</value>
   </data>
   <data name="Merchantupdatedsuccessfully" xml:space="preserve">
     <value>Merchant updated successfully</value>
   </data>
+  <data name="MerchantUpdateError" xml:space="preserve">
+    <value>An error occurred while updating merchant details for ID: {0}</value>
+  </data>
+  <data name="MerchantWithBranchesFetched" xml:space="preserve">
+    <value>Merchant with branches fetched successfully</value>
+  </data>
+  <data name="RegistrationError" xml:space="preserve">
+    <value>An error occurred during registration</value>
+  </data>
   <data name="Registrationfailed" xml:space="preserve">
     <value>Registration failed</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>User already exists</value>
   </data>
   <data name="UsernameandPasswordarerequired" xml:space="preserve">
     <value>Username and Password are required</value>
@@ -221,5 +317,8 @@
   </data>
   <data name="Userregisteredsuccessfully" xml:space="preserve">
     <value>User registered successfully</value>
+  </data>
+  <data name="ValidationError" xml:space="preserve">
+    <value>Validation error: Please fill in all required fields</value>
   </data>
 </root>

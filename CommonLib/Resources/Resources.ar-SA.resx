@@ -117,17 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActiveGroupsFetchedSuccessfully" xml:space="preserve">
+    <value>تم جلب المجموعات النشطة بنجاح</value>
+  </data>
+  <data name="ActiveGroupsFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب المجموعات النشطة</value>
+  </data>
+  <data name="ActiveMerchantsFetchedSuccessfully" xml:space="preserve">
+    <value>تم جلب التجار النشطين بنجاح</value>
+  </data>
+  <data name="ActiveMerchantsFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب التجار النشطين</value>
+  </data>
   <data name="Anerroroccurredduringlogin" xml:space="preserve">
     <value>حدث خطأ أثناء تسجيل الدخول</value>
   </data>
   <data name="Branchcreatedsuccessfully" xml:space="preserve">
     <value>تم إنشاء الفرع بنجاح</value>
   </data>
+  <data name="BranchCreationError" xml:space="preserve">
+    <value>حدث خطأ أثناء إنشاء الفرع</value>
+  </data>
   <data name="Branchdeletedsuccessfully" xml:space="preserve">
     <value>تم حذف الفرع بنجاح</value>
   </data>
+  <data name="BranchDeletionError" xml:space="preserve">
+    <value>حدث خطأ أثناء حذف الفرع بمعرف: {0}</value>
+  </data>
+  <data name="BranchesFetchedSuccessfully" xml:space="preserve">
+    <value>تم جلب جميع الفروع بنجاح</value>
+  </data>
+  <data name="BranchesFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب الفروع</value>
+  </data>
   <data name="Branchupdatedsuccessfully" xml:space="preserve">
     <value>تم تحديث الفرع بنجاح</value>
+  </data>
+  <data name="BranchUpdateError" xml:space="preserve">
+    <value>حدث خطأ أثناء تحديث الفرع بمعرف: {0}</value>
   </data>
   <data name="Errorchangingmerchantgroupformerchantid" xml:space="preserve">
     <value>خطأ في تغيير مجموعة التاجر لمعرف التاجر</value>
@@ -192,26 +219,98 @@
   <data name="GroupCreatedSuccessfully" xml:space="preserve">
     <value>تم إنشاء المجموعة بنجاح</value>
   </data>
+  <data name="GroupCreationError" xml:space="preserve">
+    <value>حدث خطأ أثناء إنشاء المجموعة</value>
+  </data>
   <data name="GroupDeletedSuccessfully" xml:space="preserve">
     <value>تم حذف المجموعة بنجاح</value>
+  </data>
+  <data name="GroupDeletionError" xml:space="preserve">
+    <value>حدث خطأ أثناء حذف المجموعة بمعرف: {0}</value>
+  </data>
+  <data name="GroupNameUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث اسم المجموعة بنجاح</value>
+  </data>
+  <data name="GroupNameUpdateError" xml:space="preserve">
+    <value>حدث خطأ أثناء تحديث اسم المجموعة بمعرف: {0}</value>
+  </data>
+  <data name="GroupsFetchedSuccessfully" xml:space="preserve">
+    <value>تم جلب جميع المجموعات بنجاح</value>
+  </data>
+  <data name="GroupsFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب المجموعات</value>
   </data>
   <data name="GroupUpdatedSuccessfully" xml:space="preserve">
     <value>تم تحديث المجموعة بنجاح</value>
   </data>
+  <data name="InvalidLanguage" xml:space="preserve">
+    <value>اللغة المحددة غير صالحة استخدم 'ar' أو 'en'</value>
+  </data>
   <data name="Invalidusernameorpassword" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صالحة</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>حدث خطأ أثناء تسجيل الدخول</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>تم تسجيل الدخول بنجاح</value>
+  </data>
+  <data name="MainBranchFetched" xml:space="preserve">
+    <value>تم جلب الفرع الرئيسي بنجاح</value>
+  </data>
+  <data name="MainBranchFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب الفرع الرئيسي لتاجر بمعرف: {0}</value>
+  </data>
+  <data name="MerchantBranchesFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب فروع التاجر بمعرف: {0}</value>
   </data>
   <data name="Merchantcreatedsuccessfully" xml:space="preserve">
     <value>تم إنشاء التاجر بنجاح</value>
   </data>
+  <data name="MerchantCreationError" xml:space="preserve">
+    <value>حدث خطأ أثناء إنشاء التاجر</value>
+  </data>
+  <data name="MerchantDetailsFetched" xml:space="preserve">
+    <value>تم جلب تفاصيل التاجر بنجاح</value>
+  </data>
+  <data name="MerchantDetailsFetchError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب تفاصيل التاجر بمعرف: {0}</value>
+  </data>
   <data name="Merchantgroupchangedsuccessfully" xml:space="preserve">
     <value>تم تغيير مجموعة التاجر بنجاح</value>
+  </data>
+  <data name="MerchantGroupChangeError" xml:space="preserve">
+    <value>حدث خطأ أثناء تغيير مجموعة التاجر بمعرف: {0}</value>
+  </data>
+  <data name="MerchantsFetchByGroupError" xml:space="preserve">
+    <value>حدث خطأ أثناء جلب التجار لمعرف المجموعة: {0}</value>
+  </data>
+  <data name="MerchantsFetchedByGroupId" xml:space="preserve">
+    <value>تم جلب التجار لمعرف المجموعة بنجاح</value>
+  </data>
+  <data name="MerchantsSearchError" xml:space="preserve">
+    <value>حدث خطأ أثناء البحث عن التجار</value>
+  </data>
+  <data name="MerchantsSearchResults" xml:space="preserve">
+    <value>تم جلب نتائج بحث التجار بنجاح</value>
   </data>
   <data name="Merchantupdatedsuccessfully" xml:space="preserve">
     <value>تم تحديث التاجر بنجاح</value>
   </data>
+  <data name="MerchantUpdateError" xml:space="preserve">
+    <value>حدث خطأ أثناء تحديث تفاصيل التاجر بمعرف: {0}</value>
+  </data>
+  <data name="MerchantWithBranchesFetched" xml:space="preserve">
+    <value>تم جلب التاجر مع فروعه بنجاح</value>
+  </data>
+  <data name="RegistrationError" xml:space="preserve">
+    <value>حدث خطأ أثناء التسجيل</value>
+  </data>
   <data name="Registrationfailed" xml:space="preserve">
     <value>فشل التسجيل</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>المستخدم موجود بالفعل</value>
   </data>
   <data name="UsernameandPasswordarerequired" xml:space="preserve">
     <value>اسم المستخدم وكلمة المرور مطلوبان</value>
@@ -221,5 +320,8 @@
   </data>
   <data name="Userregisteredsuccessfully" xml:space="preserve">
     <value>تم تسجيل المستخدم بنجاح</value>
+  </data>
+  <data name="ValidationError" xml:space="preserve">
+    <value>خطأ في التحقق: يرجى ملء جميع الحقول المطلوبة</value>
   </data>
 </root>
