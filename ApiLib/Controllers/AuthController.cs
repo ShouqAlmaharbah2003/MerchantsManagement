@@ -5,6 +5,7 @@ using CommonLib.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace ApiLib.Controllers
 {
@@ -18,9 +19,8 @@ namespace ApiLib.Controllers
         private readonly ILogger<AuthController> _logger;
         public AuthController(
             IUserService userService, ILogger<AuthController> logger,
-            IStringLocalizer<Resources> localizer,
-            ILocalizationService localizationService)
-            : base(localizationService)
+            IStringLocalizer<Resources> localizer)
+            : base(localizer)
         {
             _userService = userService;
             _localizer = localizer;
@@ -35,13 +35,17 @@ namespace ApiLib.Controllers
                 string.IsNullOrWhiteSpace(request.Password) ||
                 string.IsNullOrWhiteSpace(request.Email))
             {
-                return ErrorResponse(ErrorCodes.ValidationError); // Uses _localizationService
+                return ErrorResponse(ErrorCodes.ValidationError); 
             }
 
             try
             {
                 var user = await _userService.RegisterAsync(request).ConfigureAwait(false);
-                return Success(_localizer["UserRegisteredSuccessfully"].Value, user);
+                var localizedMessage = _localizer["UserRegisteredSuccessfully"];
+                _logger.LogInformation("Localized message for 'UserRegisteredSuccessfully': {Message}, Culture: {Culture}",
+                    localizedMessage, CultureInfo.CurrentUICulture.Name);
+                return Success(localizedMessage, user);
+                //return Success(_localizer["UserRegisteredSuccessfully"].Value, user);
             }
             catch (InvalidOperationException ex)
             {
@@ -62,13 +66,17 @@ namespace ApiLib.Controllers
             if (request == null || string.IsNullOrWhiteSpace(request.Username) ||
                 string.IsNullOrWhiteSpace(request.Password))
             {
-                return ErrorResponse(ErrorCodes.ValidationError); // Uses _localizationService
+                return ErrorResponse(ErrorCodes.ValidationError); 
             }
 
             try
             {
                 var userResponse = await _userService.LoginAsync(request).ConfigureAwait(false);
-                return Success(_localizer["LoginSuccessful"].Value, userResponse);
+                var localizedMessage = _localizer["LoginSuccessful"];
+                _logger.LogInformation("Localized message for 'LoginSuccessful': {Message}, Culture: {Culture}",
+                    localizedMessage, CultureInfo.CurrentUICulture.Name);
+                return Success(localizedMessage, userResponse);
+                //return Success(_localizer["LoginSuccessful"].Value, userResponse);
             }
             catch (UnauthorizedAccessException)
             {

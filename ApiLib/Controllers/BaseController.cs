@@ -1,17 +1,28 @@
 ﻿using CommonLib.Dtos.Responses;
 using CommonLib.Enums;
-using CommonLib.Interfaces;
+using CommonLib.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace ApiLib.Controllers
 {
     [ApiController]
     public abstract class BaseController : ControllerBase
     {
-        private readonly ILocalizationService _localizationService;
-        protected BaseController(ILocalizationService localizationService)
+        private readonly IStringLocalizer<Resources> _localizer;
+
+        protected BaseController(IStringLocalizer<Resources> localizer)
         {
-            _localizationService = localizationService;
+            _localizer = localizer;
+        }
+
+        protected IActionResult SuccessResponse()
+        {
+            var response = new ApiResponse<object>
+            {
+                Success = true
+            };
+            return Ok(response);
         }
 
         protected IActionResult SuccessResponse<T>(T data)
@@ -26,7 +37,7 @@ namespace ApiLib.Controllers
 
         protected IActionResult ErrorResponse(ErrorCodes errorCode)
         {
-            var localizedMessage = _localizationService.GetLocalizedString(errorCode.ToString());
+            var localizedMessage = _localizer[errorCode.ToString()];
             var response = new ApiResponse<object>
             {
                 Success = false,
