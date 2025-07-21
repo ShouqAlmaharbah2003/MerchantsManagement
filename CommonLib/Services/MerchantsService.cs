@@ -91,7 +91,7 @@ namespace CommonLib.Services
             sb.Append("<h1>Merchants</h1>");
             sb.Append("<table border='1' style='border-collapse: collapse; width: 100%;'>");
             sb.Append("<tr>");
-            sb.Append("<th>ID</th><th>Name (AR)</th><th>Name (EN)</th><th>Business Type</th><th>Manager       </th><th>Status   </th>");
+            sb.Append("<th>ID</th><th>         Name (AR)     </th><th>        Name (EN)   </th><th>        Business Type          </th><th>           Manager       </th><th>     Status   </th>");
             sb.Append("</tr>");
 
             foreach (var m in merchants)
@@ -134,7 +134,7 @@ namespace CommonLib.Services
                 {
                     sb.Append("<table border='1' style='border-collapse: collapse; width: 100%;'>");
                     sb.Append("<tr>");
-                    sb.Append("<th>Branch ID</th><th>Name (AR)</th><th>Name (EN)</th><th>Address</th><th>Status</th>");
+                    sb.Append("<th>       Branch ID      </th><th>       Name (AR)        </th><th>       Name (EN)      </th><th>        Address           </th><th>          Status         </th>");
                     sb.Append("</tr>");
 
                     foreach (var b in branches)
