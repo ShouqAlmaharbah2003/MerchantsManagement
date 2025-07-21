@@ -43,7 +43,7 @@ namespace ApiLib.Controllers
             try
             {
                 var user = await _userService.RegisterAsync(request).ConfigureAwait(false);
-                var localizedMessage = LocalizationHelper.GetLocalizedString("LoginSuccessfully", "en");
+                var localizedMessage = LocalizationHelper.GetLocalizedString("Userregisteredsuccessfully", "en");
                 
                 return Success(localizedMessage, user);
             }
@@ -74,7 +74,7 @@ namespace ApiLib.Controllers
             try
             {
                 var userResponse = await _userService.LoginAsync(request).ConfigureAwait(false);
-                var localizedMessage = LocalizationHelper.GetLocalizedString("LoginSuccessfully", "en");
+                var localizedMessage = LocalizationHelper.GetLocalizedString("LoginSuccessful", "en");
 
                 return Success(localizedMessage, userResponse);
             }
