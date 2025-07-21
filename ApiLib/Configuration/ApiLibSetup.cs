@@ -3,8 +3,10 @@ using CommonLib.Resources;
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Globalization;
 using System.Text;
 
 namespace ApiLib.Configuration
@@ -40,13 +42,13 @@ namespace ApiLib.Configuration
             });
 
             // Localization
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization();
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                var supportedCultures = new[] { "en-US", "ar-SA" };
-                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
-                options.SupportedCultures = supportedCultures.Select(c => new System.Globalization.CultureInfo(c)).ToList();
-                options.SupportedUICultures = supportedCultures.Select(c => new System.Globalization.CultureInfo(c)).ToList();
+                var supportedCultures = new[] {new CultureInfo("en") , new CultureInfo("ar") };
+                options.DefaultRequestCulture = new RequestCulture("en"); 
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
             });
 
             // CORS

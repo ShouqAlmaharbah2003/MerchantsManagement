@@ -118,213 +118,219 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveGroupsFetchedSuccessfully" xml:space="preserve">
-    <value>Active groups fetched successfully</value>
+    <value>تم جلب المجموعات النشطة بنجاح</value>
   </data>
   <data name="ActiveGroupsFetchError" xml:space="preserve">
-    <value>An error occurred while fetching active groups</value>
+    <value>حدث خطأ أثناء جلب المجموعات النشطة</value>
   </data>
   <data name="ActiveMerchantsFetchedSuccessfully" xml:space="preserve">
-    <value>Active merchants fetched successfully</value>
+    <value>تم جلب التجار النشطين بنجاح</value>
   </data>
   <data name="ActiveMerchantsFetchError" xml:space="preserve">
-    <value>An error occurred while fetching active merchants</value>
+    <value>حدث خطأ أثناء جلب التجار النشطين</value>
   </data>
   <data name="Anerroroccurredduringlogin" xml:space="preserve">
-    <value>An error occurred during login</value>
+    <value>حدث خطأ أثناء تسجيل الدخول</value>
   </data>
   <data name="Branchcreatedsuccessfully" xml:space="preserve">
-    <value>Branch created successfully</value>
+    <value>تم إنشاء الفرع بنجاح</value>
   </data>
   <data name="BranchCreationError" xml:space="preserve">
-    <value>An error occurred while creating the branch</value>
+    <value>حدث خطأ أثناء إنشاء الفرع</value>
   </data>
   <data name="Branchdeletedsuccessfully" xml:space="preserve">
-    <value>Branch deleted successfully</value>
+    <value>تم حذف الفرع بنجاح</value>
   </data>
   <data name="BranchesFetchedSuccessfully" xml:space="preserve">
-    <value>All branches fetched successfully</value>
+    <value>تم جلب جميع الفروع بنجاح</value>
   </data>
   <data name="BranchesFetchError" xml:space="preserve">
-    <value>An error occurred while fetching branches</value>
+    <value>حدث خطأ أثناء جلب الفروع</value>
   </data>
   <data name="Branchupdatedsuccessfully" xml:space="preserve">
-    <value>Branch updated successfully</value>
+    <value>تم تحديث الفرع بنجاح</value>
   </data>
   <data name="BranchUpdateError" xml:space="preserve">
-    <value>An error occurred while updating branch with ID: {0}</value>
+    <value>حدث خطأ أثناء تحديث الفرع بمعرف: {0}</value>
   </data>
   <data name="Errorchangingmerchantgroupformerchantid" xml:space="preserve">
-    <value>Error changing merchant group for merchant id</value>
+    <value>خطأ في تغيير مجموعة التاجر لمعرف التاجر</value>
   </data>
   <data name="Errorcreatingbranch" xml:space="preserve">
-    <value>Error creating branch</value>
+    <value>خطأ في إنشاء الفرع</value>
   </data>
   <data name="ErrorCreatingGroup" xml:space="preserve">
-    <value>Error creating group</value>
+    <value>خطأ في إنشاء المجموعة</value>
   </data>
   <data name="Errorcreatingmerchantwithname" xml:space="preserve">
-    <value>Error creating merchant with Name</value>
+    <value>حدث خطأ في انشاء هذا التاجر</value>
   </data>
   <data name="Errordeletingbranchwithid" xml:space="preserve">
-    <value>Error deleting branch</value>
+    <value>خطأ في حذف الفرع بمعرف</value>
   </data>
   <data name="ErrorDeletingGroup" xml:space="preserve">
-    <value>Error deleting group</value>
+    <value>خطأ في حذف المجموعة بمعرف</value>
   </data>
   <data name="ErrorFetchingActiveGroups" xml:space="preserve">
-    <value>Error Fetching Active Groups</value>
+    <value>خطأ في جلب المجموعات النشطة</value>
   </data>
   <data name="Errorfetchingactivemerchants" xml:space="preserve">
-    <value>Error fetching active merchants</value>
+    <value>خطأ في جلب التجار النشطين</value>
   </data>
   <data name="ErrorFetchingAllBranches" xml:space="preserve">
-    <value>Error Fetching All Branches</value>
+    <value>خطأ في جلب جميع الفروع</value>
   </data>
   <data name="ErrorFetchingAllGroups" xml:space="preserve">
-    <value>Error Fetching All Groups</value>
+    <value>خطأ في جلب جميع المجموعات</value>
   </data>
   <data name="Errorfetchingmainbranchformerchantid" xml:space="preserve">
-    <value>Error fetching main branch for merchant id</value>
+    <value>خطأ في جلب الفرع الرئيسي لمعرف التاجر</value>
   </data>
   <data name="Errorfetchingmerchantdetailsforid" xml:space="preserve">
-    <value>Error fetching merchant details for id</value>
+    <value>خطأ في جلب تفاصيل التاجر للمعرف</value>
   </data>
   <data name="Errorfetchingmerchantsbygroupid" xml:space="preserve">
-    <value>Error fetching merchants by group id</value>
+    <value>خطأ في جلب التجار حسب معرف المجموعة</value>
   </data>
   <data name="Errorfetchingmerchantwithbranchesforid" xml:space="preserve">
-    <value>Error fetching merchant with branches for id</value>
+    <value>خطأ في جلب التاجر مع الفروع للمعرف</value>
   </data>
   <data name="ErrorgeneratingPDFforsearchwithparameters" xml:space="preserve">
-    <value>Error generating PDF for search with parameters</value>
+    <value>خطأ في إنشاء PDF للبحث بالمعايير</value>
   </data>
   <data name="ErrorgeneratingPDFwithbranchesforsearchwithparameters" xml:space="preserve">
-    <value>Error generating PDF with branches for search with parameters</value>
+    <value>خطأ في إنشاء PDF مع الفروع للبحث بالمعايير</value>
   </data>
   <data name="Errorsearchingmerchantswithparameters" xml:space="preserve">
-    <value>Error searching merchants with parameters</value>
+    <value>خطأ في البحث عن التجار بالمعايير</value>
   </data>
   <data name="Errorupdatingbranchwithid" xml:space="preserve">
-    <value>Error updating branch</value>
+    <value>خطأ في تحديث الفرع بمعرف</value>
   </data>
   <data name="ErrorUpdatingGroupName" xml:space="preserve">
-    <value>Error updating group name</value>
+    <value>خطأ في تحديث اسم المجموعة</value>
   </data>
   <data name="Errorupdatingmerchantdetailsformerchantid" xml:space="preserve">
-    <value>Error updating merchant details for merchant id</value>
+    <value>خطأ في تحديث تفاصيل التاجر لمعرف التاجر</value>
   </data>
   <data name="GroupCreatedSuccessfully" xml:space="preserve">
-    <value>Group created successfully</value>
+    <value>تم إنشاء المجموعة بنجاح</value>
   </data>
   <data name="GroupCreationError" xml:space="preserve">
-    <value>An error occurred while creating the group</value>
+    <value>حدث خطأ أثناء إنشاء المجموعة</value>
   </data>
   <data name="GroupDeletedSuccessfully" xml:space="preserve">
-    <value>Group deleted successfully</value>
+    <value>تم حذف المجموعة بنجاح</value>
   </data>
   <data name="GroupDeletionError" xml:space="preserve">
-    <value>An error occurred while deleting group with ID: {0}</value>
+    <value>حدث خطأ أثناء حذف المجموعة بمعرف: {0}</value>
   </data>
   <data name="GroupNameUpdatedSuccessfully" xml:space="preserve">
-    <value>Group name updated successfully</value>
+    <value>تم تحديث اسم المجموعة بنجاح</value>
   </data>
   <data name="GroupNameUpdateError" xml:space="preserve">
-    <value>An error occurred while updating group name for ID: {0}</value>
+    <value>حدث خطأ أثناء تحديث اسم المجموعة بمعرف: {0}</value>
   </data>
   <data name="GroupsFetchedSuccessfully" xml:space="preserve">
-    <value>All groups fetched successfully</value>
+    <value>تم جلب جميع المجموعات بنجاح</value>
   </data>
   <data name="GroupsFetchError" xml:space="preserve">
-    <value>An error occurred while fetching groups</value>
+    <value>حدث خطأ أثناء جلب المجموعات</value>
   </data>
   <data name="GroupUpdatedSuccessfully" xml:space="preserve">
-    <value>Group updated successfully</value>
+    <value>تم تحديث المجموعة بنجاح</value>
   </data>
   <data name="InvalidLanguage" xml:space="preserve">
-    <value>Invalid language specified. Use 'ar' or 'en'</value>
+    <value>اللغة المحددة غير صالحة استخدم 'ar' أو 'en'</value>
   </data>
   <data name="Invalidusernameorpassword" xml:space="preserve">
-    <value>Invalid username or password</value>
+    <value>اسم المستخدم أو كلمة المرور غير صالحة</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>An error occurred during login</value>
+    <value>حدث خطأ أثناء تسجيل الدخول</value>
   </data>
   <data name="LoginSuccessful" xml:space="preserve">
-    <value>Login successful</value>
+    <value>تم تسجيل الدخول بنجاح</value>
   </data>
   <data name="MainBranchFetched" xml:space="preserve">
-    <value>Main branch fetched successfully</value>
+    <value>تم جلب الفرع الرئيسي بنجاح</value>
   </data>
   <data name="MainBranchFetchError" xml:space="preserve">
-    <value>An error occurred while fetching main branch for merchant ID: {0}</value>
+    <value>حدث خطأ أثناء جلب الفرع الرئيسي لتاجر بمعرف: {0}</value>
   </data>
   <data name="MerchantBranchesFetchError" xml:space="preserve">
-    <value>An error occurred while fetching merchant branches for ID: {0}</value>
+    <value>حدث خطأ أثناء جلب فروع التاجر بمعرف: {0}</value>
   </data>
   <data name="Merchantcreatedsuccessfully" xml:space="preserve">
-    <value>Merchant created successfully</value>
+    <value>تم إنشاء التاجر بنجاح</value>
   </data>
   <data name="MerchantCreationError" xml:space="preserve">
-    <value>An error occurred while creating the merchant</value>
+    <value>حدث خطأ أثناء إنشاء التاجر</value>
   </data>
   <data name="MerchantDetailsFetched" xml:space="preserve">
-    <value>Merchant details fetched successfully</value>
+    <value>تم جلب تفاصيل التاجر بنجاح</value>
   </data>
   <data name="MerchantDetailsFetchError" xml:space="preserve">
-    <value>An error occurred while fetching details for merchant ID: {0}</value>
+    <value>حدث خطأ أثناء جلب تفاصيل التاجر بمعرف: {0}</value>
   </data>
   <data name="Merchantgroupchangedsuccessfully" xml:space="preserve">
-    <value>Merchant group changed successfully</value>
+    <value>تم تغيير مجموعة التاجر بنجاح</value>
   </data>
   <data name="MerchantGroupChangeError" xml:space="preserve">
-    <value>An error occurred while changing merchant group for ID: {0}</value>
+    <value>حدث خطأ أثناء تغيير مجموعة التاجر بمعرف: {0}</value>
   </data>
   <data name="MerchantsFetchByGroupError" xml:space="preserve">
-    <value>An error occurred while fetching merchants for group ID: {0}</value>
+    <value>حدث خطأ أثناء جلب التجار لمعرف المجموعة: {0}</value>
   </data>
   <data name="MerchantsFetchedByGroupId" xml:space="preserve">
-    <value>Merchants fetched for group ID successfully</value>
+    <value>تم جلب التجار لمعرف المجموعة بنجاح</value>
   </data>
   <data name="MerchantsPdfGenerationError" xml:space="preserve">
-    <value>Error generating PDF for merchants</value>
+    <value>خطأ في انشاء ملف التجار</value>
   </data>
   <data name="MerchantsSearchError" xml:space="preserve">
-    <value>An error occurred while searching merchants</value>
+    <value>حدث خطأ أثناء البحث عن التجار</value>
   </data>
   <data name="MerchantsSearchResults" xml:space="preserve">
-    <value>Merchants search results fetched successfully</value>
+    <value>تم جلب نتائج بحث التجار بنجاح</value>
   </data>
   <data name="MerchantsWithBranchesPdfGenerationError" xml:space="preserve">
-    <value>Error generating PDF for merchants with branches</value>
+    <value>خطأ في انشاء ملف التجار مع فروعهم</value>
   </data>
   <data name="Merchantupdatedsuccessfully" xml:space="preserve">
-    <value>Merchant updated successfully</value>
+    <value>تم تحديث التاجر بنجاح</value>
   </data>
   <data name="MerchantUpdateError" xml:space="preserve">
-    <value>An error occurred while updating merchant details for ID: {0}</value>
+    <value>حدث خطأ أثناء تحديث تفاصيل التاجر بمعرف: {0}</value>
   </data>
   <data name="MerchantWithBranchesFetched" xml:space="preserve">
-    <value>Merchant with branches fetched successfully</value>
+    <value>تم جلب التاجر مع فروعه بنجاح</value>
   </data>
   <data name="RegistrationError" xml:space="preserve">
-    <value>An error occurred during registration</value>
+    <value>حدث خطأ أثناء التسجيل</value>
   </data>
   <data name="Registrationfailed" xml:space="preserve">
-    <value>Registration failed</value>
+    <value>فشل التسجيل</value>
   </data>
   <data name="UserAlreadyExists" xml:space="preserve">
-    <value>User already exists</value>
+    <value>المستخدم موجود بالفعل</value>
   </data>
   <data name="UsernameandPasswordarerequired" xml:space="preserve">
-    <value>Username and Password are required</value>
+    <value>اسم المستخدم وكلمة المرور مطلوبان</value>
   </data>
   <data name="UsernamePasswordAndEmailRequired" xml:space="preserve">
-    <value>Username, Password, and Email are required</value>
+    <value>اسم المستخدم وكلمة المرور والبريد الإلكتروني مطلوبة</value>
   </data>
   <data name="Userregisteredsuccessfully" xml:space="preserve">
-    <value>User registered successfully</value>
+    <value>تم تسجيل المستخدم بنجاح</value>
   </data>
   <data name="ValidationError" xml:space="preserve">
-    <value>Validation error: Please fill in all required fields</value>
+    <value>خطأ في التحقق: يرجى ملء جميع الحقول المطلوبة</value>
+  </data>
+  <data name="BranchDeletionError" xml:space="preserve">
+    <value>حدث خطأ أثناء حذف الفرع</value>
+  </data>
+  <data name="Errorcreatingmerchantwiththisname" xml:space="preserve">
+    <value>خطأ في إنشاء التاجر باسم</value>
   </data>
 </root>

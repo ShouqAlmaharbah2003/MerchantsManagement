@@ -1,15 +1,25 @@
-﻿using System.Globalization;
+﻿using CommonLib.Resources;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
 using System.Resources;
 
 namespace CommonLib.Utils
 {
     public static class LocalizationHelper
     {
+
+        private static IStringLocalizer<SharedResources> _localizer;    
+
+        public static void Configure(IStringLocalizer<SharedResources> localizer)
+        {
+            _localizer = localizer;
+        }
+
+
         public static string GetLocalizedString(string key, string culture)
         {
-            var resourceManager = new ResourceManager("CommonLib.Resources.Resources", typeof(LocalizationHelper).Assembly);
-            var ci = new CultureInfo(culture);
-            return resourceManager.GetString(key, ci);
+            var message = _localizer[key];
+            return message;
         }
     }
 }

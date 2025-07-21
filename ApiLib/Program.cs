@@ -1,6 +1,10 @@
 ﻿using ApiLib.Configuration;
 using CommonLib.Configuration;
+using CommonLib.Resources;
+using CommonLib.Utils;
 using DataLib.Configuration;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +32,12 @@ var app = builder.Build();
 // ------------------------------
 // Middleware & Routing
 // ------------------------------
-app.UseRequestLocalization();
+//app.UseRequestLocalization();
+app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
+var localizer = app.Services.GetRequiredService<IStringLocalizer<SharedResources>>();
+LocalizationHelper.Configure(localizer);
+
 app.UseMiddleware<ApiLib.Middleware.LoggingMiddleware>();
 app.UseRouting();
 app.UseHttpsRedirection();

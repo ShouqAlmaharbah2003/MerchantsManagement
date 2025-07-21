@@ -1,7 +1,9 @@
-﻿using CommonLib.Dtos.Requests;
+﻿using ApiLib.Filters;
+using CommonLib.Dtos.Requests;
 using CommonLib.Enums;
 using CommonLib.Interfaces;
 using CommonLib.Resources;
+using CommonLib.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -15,11 +17,11 @@ namespace ApiLib.Controllers
     public class AuthController : SecureController
     {
         private readonly IUserService _userService;
-        private readonly IStringLocalizer<Resources> _localizer;
+        private readonly IStringLocalizer<SharedResources> _localizer;
         private readonly ILogger<AuthController> _logger;
         public AuthController(
             IUserService userService, ILogger<AuthController> logger,
-            IStringLocalizer<Resources> localizer)
+            IStringLocalizer<SharedResources> localizer)
             : base(localizer)
         {
             _userService = userService;
@@ -41,21 +43,21 @@ namespace ApiLib.Controllers
             try
             {
                 var user = await _userService.RegisterAsync(request).ConfigureAwait(false);
-                var localizedMessage = _localizer["UserRegisteredSuccessfully"];
-                _logger.LogInformation("Localized message for 'UserRegisteredSuccessfully': {Message}, Culture: {Culture}",
-                    localizedMessage, CultureInfo.CurrentUICulture.Name);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("LoginSuccessfully", "en");
+                
                 return Success(localizedMessage, user);
-                //return Success(_localizer["UserRegisteredSuccessfully"].Value, user);
             }
             catch (InvalidOperationException ex)
             {
                 _logger.LogWarning(ex, "User registration failed: {Message}", ex.Message);
-                return Error(_localizer["UserAlreadyExists"].Value);
+                var localizedError = LocalizationHelper.GetLocalizedString("UserAlreadyExists", "en");
+                return Error(localizedError);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during registration.");
-                return Error(_localizer["RegistrationError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("RegistrationError", "en");
+                return Error(localizedError, 500);
             }
         }
 
@@ -72,108 +74,21 @@ namespace ApiLib.Controllers
             try
             {
                 var userResponse = await _userService.LoginAsync(request).ConfigureAwait(false);
-                var localizedMessage = _localizer["LoginSuccessful"];
-                _logger.LogInformation("Localized message for 'LoginSuccessful': {Message}, Culture: {Culture}",
-                    localizedMessage, CultureInfo.CurrentUICulture.Name);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("LoginSuccessfully", "en");
+
                 return Success(localizedMessage, userResponse);
-                //return Success(_localizer["LoginSuccessful"].Value, userResponse);
             }
             catch (UnauthorizedAccessException)
             {
-                return UnauthorizedError(_localizer["InvalidUsernameOrPassword"].Value);
+                var localizedError = LocalizationHelper.GetLocalizedString("InvalidUsernameOrPassword", "en");
+                return UnauthorizedError(localizedError);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during login.");
-                return Error(_localizer["LoginError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("LoginError", "en");
+                return Error(localizedError, 500);
             }
         }
     }
 }
-
-
-
-
-//using CommonLib.Dtos.Requests;
-//using CommonLib.Enums;
-//using CommonLib.Interfaces;
-//using CommonLib.Resources;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.Extensions.Localization;
-
-//namespace ApiLib.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    [AllowAnonymous]
-//    public class AuthController : SecureController
-//    {
-//        private readonly IUserService _userService;
-//        private readonly IStringLocalizer<Resources> _localizer;
-//        private readonly ILogger<AuthController> _logger;
-//        public AuthController(
-//            IUserService userService, ILogger<AuthController> logger,
-//            IStringLocalizer<Resources> localizer,
-//            ILocalizationService localizationService)
-//            : base(localizationService)
-//        {
-//            _userService = userService;
-//            _localizer = localizer;
-//            _logger = logger;
-//        }
-
-//        [HttpPost("register")]
-//        [AllowAnonymous]
-//        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
-//        {
-//            if (request == null || string.IsNullOrWhiteSpace(request.Username) ||
-//                string.IsNullOrWhiteSpace(request.Password) ||
-//                string.IsNullOrWhiteSpace(request.Email))
-//            {
-//                return Error(ErrorCodes.ValidationError); // _localizer["ValidationError"].Value);
-//            }
-
-//            try
-//            {
-//                var user = await _userService.RegisterAsync(request).ConfigureAwait(false);
-//                return Success("User registered successfully.");// _localizer["UserRegisteredSuccessfully"].Value, user);
-//            }
-//            catch (InvalidOperationException ex)
-//            {
-//                return Error(ex.Message); // _localizer["UserAlreadyExists"].Value);
-//            }
-//            catch (Exception ex)
-//            {
-//                _logger.LogError(ex, "An error occurred during registration.");
-//                return Error("An error occurred during registration.", 500); // _localizer["RegistrationError"].Value);
-//            }
-//        }
-
-//        [HttpPost("login")]
-//        [AllowAnonymous]
-//        public async Task<IActionResult> Login([FromBody] LoginRequest request)
-//        {
-//            if (request == null || string.IsNullOrWhiteSpace(request.Username) ||
-//                string.IsNullOrWhiteSpace(request.Password))
-//            {
-//                return Error(ErrorCodes.ValidationError); // _localizer["ValidationError"].Value);
-//            }
-
-//            try
-//            {
-//                var userResponse = await _userService.LoginAsync(request).ConfigureAwait(false);
-//                return Success(userResponse); // _localizer["LoginSuccessful"].Value, userResponse);
-//            }
-//            catch (UnauthorizedAccessException)
-//            {
-//                return UnauthorizedError("Invalid username or password."); // _localizer["InvalidUsernameOrPassword"].Value);
-//            }
-//            catch (Exception ex)
-//            {
-//                _logger.LogError(ex, "An error occurred during login.");
-//                return Error("An error occurred during login.", 500); // _localizer["LoginError"].Value);
-//            }
-//        }
-//    }
-//}

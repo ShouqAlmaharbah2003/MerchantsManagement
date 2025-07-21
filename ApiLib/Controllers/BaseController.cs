@@ -1,4 +1,5 @@
-﻿using CommonLib.Dtos.Responses;
+﻿using ApiLib.Filters;
+using CommonLib.Dtos.Responses;
 using CommonLib.Enums;
 using CommonLib.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace ApiLib.Controllers
     [ApiController]
     public abstract class BaseController : ControllerBase
     {
-        private readonly IStringLocalizer<Resources> _localizer;
+        private readonly IStringLocalizer<SharedResources> _localizer;
 
-        protected BaseController(IStringLocalizer<Resources> localizer)
+        protected BaseController(IStringLocalizer<SharedResources> localizer)
         {
             _localizer = localizer;
         }

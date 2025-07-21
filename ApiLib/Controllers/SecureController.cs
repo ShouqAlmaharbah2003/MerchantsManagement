@@ -12,7 +12,7 @@ namespace ApiLib.Controllers
     [ServiceFilter(typeof(LocalizationFilter))]
     public abstract class SecureController : BaseController
     {
-        protected SecureController(IStringLocalizer<Resources> localizer)
+        protected SecureController(IStringLocalizer<SharedResources> localizer)
             : base(localizer)
         {
         }

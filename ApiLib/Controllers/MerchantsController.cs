@@ -14,12 +14,12 @@ namespace ApiLib.Controllers
     public class MerchantsController : SecureController
     {
         private readonly IMerchantsService _service;
-        private readonly IStringLocalizer<Resources> _localizer;
+        private readonly IStringLocalizer<SharedResources> _localizer;
         private readonly ILogger<MerchantsController> _logger;
 
         public MerchantsController(
             IMerchantsService service,
-            IStringLocalizer<Resources> localizer,
+            IStringLocalizer<SharedResources> localizer,
             ILogger<MerchantsController> logger)
             : base(localizer)
         {
@@ -34,12 +34,14 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.CreateMerchantAsync(dto).ConfigureAwait(false);
-                return Success(_localizer["MerchantCreatedSuccessfully"].Value);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantCreatedSuccessfully", "en");
+                return Success(localizedMessage);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating merchant with Name_Ar: {Name_Ar}, Name_En: {Name_En}", dto.Name_Ar, dto.Name_En);
-                return Error(_localizer["MerchantCreationError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantCreationError", "en");
+                return Error(localizedError, 500);
             }
         }
 
@@ -49,12 +51,14 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetActiveMerchantsAsync().ConfigureAwait(false);
-                return Success(_localizer["ActiveMerchantsFetchedSuccessfully"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("ActiveMerchantsFetchedSuccessfully", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching active merchants.");
-                return Error(_localizer["ActiveMerchantsFetchError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("ActiveMerchantsFetchError", "en");
+                return Error(localizedError, 500);
             }
         }
 
@@ -64,12 +68,14 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantsByGroupIdAsync(groupId).ConfigureAwait(false);
-                return Success(_localizer["MerchantsFetchedByGroupId"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantsFetchedByGroupId", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchants by group id: {GroupId}", groupId);
-                return Error(string.Format(_localizer["MerchantsFetchByGroupError"].Value, groupId), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantsFetchByGroupError", "en"); 
+                return Error(string.Format(localizedError, groupId), 500);
             }
         }
 
@@ -79,12 +85,14 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantDetailsByIdAsync(id).ConfigureAwait(false);
-                return Success(_localizer["MerchantDetailsFetched"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantDetailsFetched", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchant details for id: {Id}", id);
-                return Error(string.Format(_localizer["MerchantDetailsFetchError"].Value, id), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantDetailsFetchError", "en");
+                return Error(string.Format(localizedError, id), 500);
             }
         }
 
@@ -94,12 +102,14 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantWithBranchesAsync(id).ConfigureAwait(false);
-                return Success(_localizer["MerchantWithBranchesFetched"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantWithBranchesFetched", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching merchant with branches for id: {Id}", id);
-                return Error(string.Format(_localizer["MerchantBranchesFetchError"].Value, id), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantBranchesFetchError", "en");
+                return Error(string.Format(localizedError, id), 500);
             }
         }
 
@@ -109,12 +119,14 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.GetMerchantMainBranchAsync(merchantId).ConfigureAwait(false);
-                return Success(_localizer["MainBranchFetched"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MainBranchFetched", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error fetching main branch for merchant id: {MerchantId}", merchantId);
-                return Error(string.Format(_localizer["MainBranchFetchError"].Value, merchantId), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MainBranchFetchError", "en");
+                return Error(string.Format(localizedError, merchantId), 500);
             }
         }
 
@@ -128,33 +140,16 @@ namespace ApiLib.Controllers
             try
             {
                 var result = await _service.SearchMerchantsAsync(name, mobile, cityId ?? 0, branchName).ConfigureAwait(false);
-                return Success(_localizer["MerchantsSearchResults"].Value, result);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantsSearchResults", "en");
+                return Success(localizedMessage, result);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error searching merchants.");
-                return Error(_localizer["MerchantsSearchError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantsSearchError", "en");
+                return Error(localizedError, 500);
             }
         }
-
-        //[HttpGet("search")]
-        //public async Task<IActionResult> SearchMerchants(
-        //    [FromQuery] string name,
-        //    [FromQuery] string mobile,
-        //    [FromQuery] int cityId,
-        //    [FromQuery] string branchName)
-        //{
-        //    try
-        //    {
-        //        var result = await _service.SearchMerchantsAsync(name, mobile, cityId, branchName).ConfigureAwait(false);
-        //        return Success(_localizer["MerchantsSearchResults"].Value, result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error searching merchants with parameters: {Name}, {Mobile}, {CityId}, {BranchName}", name, mobile, cityId, branchName);
-        //        return Error(_localizer["MerchantsSearchError"].Value, 500);
-        //    }
-        //}
 
         [HttpGet("search/pdf")]
         public async Task<IActionResult> SearchMerchantsAsPdf(
@@ -173,7 +168,8 @@ namespace ApiLib.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error generating PDF for merchants search.");
-                return Error(_localizer["MerchantsSearchPdfError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantsSearchPdfError", "en");
+                return Error(localizedError, 500);
             }
         }
 
@@ -194,7 +190,8 @@ namespace ApiLib.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error generating PDF for merchants search with branches.");
-                return Error(_localizer["MerchantsWithBranchesSearchPdfError"].Value, 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantsWithBranchesSearchPdfError", "en");
+                return Error(localizedError, 500);
             }
         }
 
@@ -204,12 +201,14 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.ChangeMerchantGroupIdAsync(merchantId, newGroupId).ConfigureAwait(false);
-                return Success(_localizer["MerchantGroupChangedSuccessfully"].Value);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantGroupChangedSuccessfully", "en");
+                return Success(localizedMessage);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error changing merchant group for merchant id: {MerchantId}", merchantId);
-                return Error(string.Format(_localizer["MerchantGroupChangeError"].Value, merchantId), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantGroupChangeError", "en");
+                return Error(string.Format(localizedError), 500);
             }
         }
 
@@ -219,12 +218,14 @@ namespace ApiLib.Controllers
             try
             {
                 await _service.UpdateMerchantDetailsAsync(merchantId, dto).ConfigureAwait(false);
-                return Success(_localizer["MerchantUpdatedSuccessfully"].Value);
+                var localizedMessage = LocalizationHelper.GetLocalizedString("MerchantUpdatedSuccessfully", "en");
+                return Success(localizedMessage);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating merchant details for merchant id: {MerchantId}", merchantId);
-                return Error(string.Format(_localizer["MerchantUpdateError"].Value, merchantId), 500);
+                var localizedError = LocalizationHelper.GetLocalizedString("MerchantUpdateError", "en");
+                return Error(string.Format(localizedError, merchantId), 500);
             }
         }
     }
