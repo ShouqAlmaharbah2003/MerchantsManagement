@@ -1,4 +1,7 @@
 ﻿using ApiLib.Filters;
+using CommonLib.Resources;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -86,6 +89,7 @@ namespace ApiLib.Configuration
                     }
                 });
             });
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
         }
     }
 }

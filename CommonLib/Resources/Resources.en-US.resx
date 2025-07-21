@@ -285,11 +285,17 @@
   <data name="MerchantsFetchedByGroupId" xml:space="preserve">
     <value>Merchants fetched for group ID successfully</value>
   </data>
+  <data name="MerchantsPdfGenerationError" xml:space="preserve">
+    <value>Error generating PDF for merchants</value>
+  </data>
   <data name="MerchantsSearchError" xml:space="preserve">
     <value>An error occurred while searching merchants</value>
   </data>
   <data name="MerchantsSearchResults" xml:space="preserve">
     <value>Merchants search results fetched successfully</value>
+  </data>
+  <data name="MerchantsWithBranchesPdfGenerationError" xml:space="preserve">
+    <value>Error generating PDF for merchants with branches</value>
   </data>
   <data name="Merchantupdatedsuccessfully" xml:space="preserve">
     <value>Merchant updated successfully</value>

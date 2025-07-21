@@ -88,10 +88,10 @@ namespace CommonLib.Services
 
             var sb = new StringBuilder();
             sb.Append("<html><body>");
-            sb.Append("<h1>Search Results</h1>");
+            sb.Append("<h1>Merchants</h1>");
             sb.Append("<table border='1' style='border-collapse: collapse; width: 100%;'>");
             sb.Append("<tr>");
-            sb.Append("<th>ID</th><th>Name (AR)</th><th>Name (EN)</th><th>Business Type</th><th>Manager</th><th>Status</th>");
+            sb.Append("<th>ID</th><th>Name (AR)</th><th>Name (EN)</th><th>Business Type</th><th>Manager       </th><th>Status   </th>");
             sb.Append("</tr>");
 
             foreach (var m in merchants)
@@ -118,7 +118,7 @@ namespace CommonLib.Services
 
             var sb = new StringBuilder();
             sb.Append("<html><body>");
-            sb.Append("<h1>Search Results With Branches</h1>");
+            sb.Append("<h1>Merchant With Branches</h1>");
 
             foreach (var m in merchants)
             {
@@ -297,66 +297,58 @@ namespace CommonLib.Services
                 return response;
         }
 
-        public async Task<List<MerchantResponse>> SearchMerchantsAsync(string name, string mobile, int cityId, string branchName)
+        public async Task<List<MerchantResponse>> SearchMerchantsAsync(
+            string name, string mobile, int cityId, string branchName)
         {
-                var query = (await _repository.GetAllAsync().ConfigureAwait(false)).AsQueryable();
+            var query = (await _repository.GetAllAsync().ConfigureAwait(false)).AsQueryable();
 
-                if (!string.IsNullOrEmpty(name))
-                {
-                    query = query.Where(m =>
-                        m.Name_Ar.Contains(name) || m.Name_En.Contains(name));
-                }
+            if (!string.IsNullOrWhiteSpace(name))
+                query = query.Where(m => m.Name_Ar.Contains(name) || m.Name_En.Contains(name));
 
-                if (!string.IsNullOrEmpty(mobile))
-                {
-                    var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
-                        .Where(b => b.Mobile != null && b.Mobile.Contains(mobile))
-                        .Select(b => b.Merchant.Id)
-                        .Distinct()
-                        .ToList();
+            if (!string.IsNullOrWhiteSpace(mobile))
+            {
+                var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
+                    .Where(b => !string.IsNullOrEmpty(b.Mobile) && b.Mobile.Contains(mobile))
+                    .Select(b => b.Merchant.Id)
+                    .Distinct()
+                    .ToList();
 
-                    query = query.Where(m => branchMerchantIds.Contains(m.Id));
-                }
+                query = query.Where(m => branchMerchantIds.Contains(m.Id));
+            }
 
-                if (cityId > 0)
-                {
-                    var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
-                        .Where(b => b.CityId == cityId)
-                        .Select(b => b.Merchant.Id)
-                        .Distinct()
-                        .ToList();
+            if (cityId > 0)
+            {
+                var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
+                    .Where(b => b.CityId == cityId)
+                    .Select(b => b.Merchant.Id)
+                    .Distinct()
+                    .ToList();
 
-                    query = query.Where(m => branchMerchantIds.Contains(m.Id));
-                }
+                query = query.Where(m => branchMerchantIds.Contains(m.Id));
+            }
 
-                if (!string.IsNullOrEmpty(branchName))
-                {
-                    var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
-                        .Where(b => b.BranchName_Ar.Contains(branchName) || b.BranchName_En.Contains(branchName))
-                        .Select(b => b.Merchant.Id)
-                        .Distinct()
-                        .ToList();
+            if (!string.IsNullOrWhiteSpace(branchName))
+            {
+                var branchMerchantIds = (await _branchesRepository.GetAllAsync().ConfigureAwait(false))
+                    .Where(b => b.BranchName_Ar.Contains(branchName) || b.BranchName_En.Contains(branchName))
+                    .Select(b => b.Merchant.Id)
+                    .Distinct()
+                    .ToList();
 
-                    query = query.Where(m => branchMerchantIds.Contains(m.Id));
-                }
+                query = query.Where(m => branchMerchantIds.Contains(m.Id));
+            }
 
-                var filteredMerchants = query.ToList();
+            var filteredMerchants = query.ToList();
 
-                var result = new List<MerchantResponse>();
-                foreach (var m in filteredMerchants)
-                {
-                    result.Add(new MerchantResponse
-                    {
-                        Id = m.Id,
-                        Name_Ar = m.Name_Ar,
-                        Name_En = m.Name_En,
-                        BusinessType = m.BusinessType,
-                        ManagerName = m.ManagerName,
-                        Status = m.Status == 1 ? "Active" : "Inactive"
-                    });
-                }
-                Log.Information("Found {Count} merchants.", result.Count);
-                return result;
+            return filteredMerchants.Select(m => new MerchantResponse
+            {
+                Id = m.Id,
+                Name_Ar = m.Name_Ar,
+                Name_En = m.Name_En,
+                BusinessType = m.BusinessType,
+                ManagerName = m.ManagerName,
+                Status = m.Status == 1 ? "Active" : "Inactive"
+            }).ToList();
         }
 
         public async Task UpdateMerchantDetailsAsync(int merchantId, MerchantRequest dto)

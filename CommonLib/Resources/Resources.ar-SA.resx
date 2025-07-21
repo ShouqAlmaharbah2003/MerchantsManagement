@@ -288,11 +288,17 @@
   <data name="MerchantsFetchedByGroupId" xml:space="preserve">
     <value>تم جلب التجار لمعرف المجموعة بنجاح</value>
   </data>
+  <data name="MerchantsPdfGenerationError" xml:space="preserve">
+    <value>خطأ في انشاء ملف التجار</value>
+  </data>
   <data name="MerchantsSearchError" xml:space="preserve">
     <value>حدث خطأ أثناء البحث عن التجار</value>
   </data>
   <data name="MerchantsSearchResults" xml:space="preserve">
     <value>تم جلب نتائج بحث التجار بنجاح</value>
+  </data>
+  <data name="MerchantsWithBranchesPdfGenerationError" xml:space="preserve">
+    <value>خطأ في انشاء ملف التجار مع فروعهم</value>
   </data>
   <data name="Merchantupdatedsuccessfully" xml:space="preserve">
     <value>تم تحديث التاجر بنجاح</value>

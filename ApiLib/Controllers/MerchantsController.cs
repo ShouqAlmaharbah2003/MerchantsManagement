@@ -2,6 +2,7 @@
 using CommonLib.Enums;
 using CommonLib.Interfaces;
 using CommonLib.Resources;
+using CommonLib.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -119,6 +120,44 @@ namespace ApiLib.Controllers
 
         [HttpGet("search")]
         public async Task<IActionResult> SearchMerchants(
+        [FromQuery] string name,
+        [FromQuery] string mobile,
+        [FromQuery] int? cityId,
+        [FromQuery] string branchName)
+        {
+            try
+            {
+                var result = await _service.SearchMerchantsAsync(name, mobile, cityId ?? 0, branchName).ConfigureAwait(false);
+                return Success(_localizer["MerchantsSearchResults"].Value, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error searching merchants.");
+                return Error(_localizer["MerchantsSearchError"].Value, 500);
+            }
+        }
+
+        //[HttpGet("search")]
+        //public async Task<IActionResult> SearchMerchants(
+        //    [FromQuery] string name,
+        //    [FromQuery] string mobile,
+        //    [FromQuery] int cityId,
+        //    [FromQuery] string branchName)
+        //{
+        //    try
+        //    {
+        //        var result = await _service.SearchMerchantsAsync(name, mobile, cityId, branchName).ConfigureAwait(false);
+        //        return Success(_localizer["MerchantsSearchResults"].Value, result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error searching merchants with parameters: {Name}, {Mobile}, {CityId}, {BranchName}", name, mobile, cityId, branchName);
+        //        return Error(_localizer["MerchantsSearchError"].Value, 500);
+        //    }
+        //}
+
+        [HttpGet("search/pdf")]
+        public async Task<IActionResult> SearchMerchantsAsPdf(
             [FromQuery] string name,
             [FromQuery] string mobile,
             [FromQuery] int cityId,
@@ -126,13 +165,36 @@ namespace ApiLib.Controllers
         {
             try
             {
-                var result = await _service.SearchMerchantsAsync(name, mobile, cityId, branchName).ConfigureAwait(false);
-                return Success(_localizer["MerchantsSearchResults"].Value, result);
+                var htmlContent = await _service.GenerateSearchResultsHtmlAsync(name, mobile, cityId, branchName);
+                var pdfBytes = await PdfGenerator.GeneratePdfAsync(htmlContent);
+
+                return File(pdfBytes, "application/pdf", "MerchantsSearchResults.pdf");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error searching merchants with parameters: {Name}, {Mobile}, {CityId}, {BranchName}", name, mobile, cityId, branchName);
-                return Error(_localizer["MerchantsSearchError"].Value, 500);
+                _logger.LogError(ex, "Error generating PDF for merchants search.");
+                return Error(_localizer["MerchantsSearchPdfError"].Value, 500);
+            }
+        }
+
+        [HttpGet("search-with-branches/pdf")]
+        public async Task<IActionResult> SearchMerchantsWithBranchesAsPdf(
+            [FromQuery] string name,
+            [FromQuery] string mobile,
+            [FromQuery] int cityId,
+            [FromQuery] string branchName)
+        {
+            try
+            {
+                var htmlContent = await _service.GenerateSearchWithBranchesResultsHtmlAsync(name, mobile, cityId, branchName);
+                var pdfBytes = await PdfGenerator.GeneratePdfAsync(htmlContent);
+
+                return File(pdfBytes, "application/pdf", "MerchantsWithBranchesSearchResults.pdf");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error generating PDF for merchants search with branches.");
+                return Error(_localizer["MerchantsWithBranchesSearchPdfError"].Value, 500);
             }
         }
 
