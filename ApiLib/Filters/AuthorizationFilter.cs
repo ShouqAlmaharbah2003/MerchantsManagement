@@ -7,7 +7,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.IdentityModel.Tokens.Jwt;
-using NHibernate;
 using NHibernate.Linq;
 using ISession = NHibernate.ISession;
 

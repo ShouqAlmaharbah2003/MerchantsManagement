@@ -9,9 +9,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ------------------------------
 // Logging
-// ------------------------------
 builder.Host.UseSerilog((context, config) =>
 {
     config.WriteTo.Console()
@@ -20,19 +18,14 @@ builder.Host.UseSerilog((context, config) =>
 
 builder.Services.AddLogging(logging => logging.AddSerilog());
 
-// ------------------------------
 // Setup Projects
-// ------------------------------
 builder.Services.AddDataLibServices(builder.Configuration);
 builder.Services.AddCommonLibServices(builder.Configuration);
 builder.Services.AddApiLibServices(builder.Configuration);
 
 var app = builder.Build();
 
-// ------------------------------
 // Middleware & Routing
-// ------------------------------
-//app.UseRequestLocalization();
 app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
 var localizer = app.Services.GetRequiredService<IStringLocalizer<SharedResources>>();

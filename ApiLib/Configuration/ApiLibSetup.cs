@@ -1,5 +1,4 @@
 ﻿using ApiLib.Filters;
-using CommonLib.Resources;
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

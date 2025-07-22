@@ -37,7 +37,6 @@ namespace ApiLib.Controllers
             {
                 await _service.CreateBranchAsync(dto).ConfigureAwait(false);
                 var localizedMessage = LocalizationHelper.GetLocalizedString("BranchCreatedSuccessfully", "en");
-
                 return Success(localizedMessage);
             }
             catch (Exception ex)

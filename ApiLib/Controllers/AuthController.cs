@@ -1,5 +1,4 @@
-﻿using ApiLib.Filters;
-using CommonLib.Dtos.Requests;
+﻿using CommonLib.Dtos.Requests;
 using CommonLib.Enums;
 using CommonLib.Interfaces;
 using CommonLib.Resources;
@@ -7,7 +6,6 @@ using CommonLib.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Globalization;
 
 namespace ApiLib.Controllers
 {

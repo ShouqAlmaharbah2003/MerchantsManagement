@@ -10,7 +10,7 @@ namespace CommonLib.Configuration
     {
         public static void AddCommonLibServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // تسجيل Services تلقائيًا
+            // تسجيل Services تلقائيا
             RegisterServices(services);
 
             //  تسجيل JwtSettings
@@ -23,7 +23,7 @@ namespace CommonLib.Configuration
                 options.ExpiryInMinutes = int.Parse(jwtSection["ExpiryInMinutes"]);
             });
 
-            // تسجيل IJwtService يدويًا (لأنه Singleton)
+            // تسجيل IJwtService يدويا (لأنه Singleton)
             services.AddSingleton<IJwtService, JwtService>();
         }
 

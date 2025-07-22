@@ -1,5 +1,4 @@
-﻿using ApiLib.Filters;
-using CommonLib.Dtos.Responses;
+﻿using CommonLib.Dtos.Responses;
 using CommonLib.Enums;
 using CommonLib.Resources;
 using Microsoft.AspNetCore.Mvc;

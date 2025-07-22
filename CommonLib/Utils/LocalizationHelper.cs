@@ -1,7 +1,5 @@
 ﻿using CommonLib.Resources;
 using Microsoft.Extensions.Localization;
-using System.Globalization;
-using System.Resources;
 
 namespace CommonLib.Utils
 {
