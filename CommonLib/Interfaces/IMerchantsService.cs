@@ -16,5 +16,6 @@ namespace CommonLib.Interfaces
         Task<MerchantWithBranchesResponse> GetMerchantWithBranchesAsync(int id);
         Task<List<MerchantResponse>> SearchMerchantsAsync(string name, string mobile, int cityId, string branchName);
         Task UpdateMerchantDetailsAsync(int merchantId, MerchantRequest dto);
+        byte[] ConvertToPDF(string htmlContent);
     }
 }
